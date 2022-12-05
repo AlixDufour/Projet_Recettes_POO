@@ -6,6 +6,7 @@ import application.Recette;
 import dao.Dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -75,7 +76,25 @@ public class RecetteDAO implements Dao<Recette>{
 
 	@Override
 	public void create(Recette t) {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO Recette(nom,description,duree,difficulte,prix) VALUES(?,?,?,?,?)";
+		
+		this.connect();
+		
+		try {
+			PreparedStatement pstmt = this.conn.prepareStatement(sql);
+			pstmt.setString(1, t.getName());
+			pstmt.setString(2, t.getDesc());
+			pstmt.setInt(3, t.getDuree());
+			pstmt.setString(4, t.getDifficulte());
+			pstmt.setString(5, t.getPrix());
+			
+			pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		this.closeConnection();
 		
 	}	
 

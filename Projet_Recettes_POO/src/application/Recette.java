@@ -26,4 +26,10 @@ public class Recette {
 		
 		return s;
 	}
+	
+	public String getName() {return this.nom;}
+	public String getDesc() {return this.description;}
+	public int getDuree() {return this.duree;}
+	public String getDifficulte() {return this.difficulte;}
+	public String getPrix() {return this.prix;}
 }

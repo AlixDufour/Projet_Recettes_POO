@@ -4,13 +4,17 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import dao.Dao;
+import dao.IngredientDAO;
 import dao.RecetteDAO;
+import dao.UstensileDAO;
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		
-		RecetteDAO test = new RecetteDAO();
+		RecetteDAO recetteDao = new RecetteDAO();
+		IngredientDAO ingrDao = new IngredientDAO();
+		UstensileDAO ustDao = new UstensileDAO();
 		
 		try {
 			BorderPane root = new BorderPane();
@@ -19,7 +23,10 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-			for(Recette r : test.getAll()) {
+			Ustensile u = new Ustensile("Casserole");
+			ustDao.create(u);
+			
+			for(Ustensile r : ustDao.getAll()) {
 				System.out.println(r);
 			}
 			
