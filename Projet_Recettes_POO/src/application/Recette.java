@@ -1,5 +1,6 @@
 package application;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Recette {
@@ -11,6 +12,7 @@ public class Recette {
 	String prix;
 	
 	List<String> etapes;
+	HashMap<Integer, String> regimes;
 	
 	public Recette(String nom, String desc, int duree, String diff, String prix, List <String >etapes) {
 		this.nom = nom;
@@ -19,6 +21,7 @@ public class Recette {
 		this.difficulte = diff;
 		this.prix = prix;
 		this.etapes = etapes;
+		regimes = null;
 	}
 	
 	public String toString() {

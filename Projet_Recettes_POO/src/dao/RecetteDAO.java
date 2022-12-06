@@ -69,6 +69,8 @@ public class RecetteDAO implements Dao<Recette>{
 					etapes.add(rs2.getString(2));
 				}
 				
+				
+				
 				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6), etapes));
 			}
 			
