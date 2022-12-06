@@ -1,5 +1,7 @@
 package application;
 
+import java.util.List;
+
 public class Recette {
 
 	String nom;
@@ -8,13 +10,15 @@ public class Recette {
 	String difficulte;
 	String prix;
 	
+	List<String> etapes;
 	
-	public Recette(String nom, String desc, int duree, String diff, String prix) {
+	public Recette(String nom, String desc, int duree, String diff, String prix, List <String >etapes) {
 		this.nom = nom;
 		this.description = desc;
 		this.duree = duree;
 		this.difficulte = diff;
 		this.prix = prix;
+		this.etapes = etapes;
 	}
 	
 	public String toString() {
@@ -23,6 +27,10 @@ public class Recette {
 		s += "Durée : " + this.duree + "\n";
 		s += "Difficulté : " + this.difficulte + "\n";
 		s += "Prix : " + this.prix + "\n";
+		s += "Etapes : \n";
+		for(String d : this.etapes) {
+			s += d + "\n";
+		}
 		
 		return s;
 	}

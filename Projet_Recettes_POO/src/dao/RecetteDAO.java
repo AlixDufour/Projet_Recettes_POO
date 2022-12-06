@@ -50,16 +50,26 @@ public class RecetteDAO implements Dao<Recette>{
 		
 		List<Recette> recettes = new ArrayList<Recette>();
 		
-		String sql = "SELECT * from Recette";
-		
 		this.connect();
-		
+		String sql = "SELECT * from Recette";
+		// Récupération infos générales d'une recette
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6)));
+				
+				ArrayList<String> etapes = new ArrayList<>();
+				
+				PreparedStatement pstmt = conn.prepareStatement("SELECT Etape.num_etape, Etape.description FROM Etape WHERE Etape.recetteId = ?");
+				pstmt.setInt(1, rs.getInt(1));
+				ResultSet rs2 = pstmt.executeQuery();
+				
+				while(rs2.next()) {
+					etapes.add(rs2.getString(2));
+				}
+				
+				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6), etapes));
 			}
 			
 			

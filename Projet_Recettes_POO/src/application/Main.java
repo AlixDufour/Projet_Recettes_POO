@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import dao.Dao;
 import dao.IngredientDAO;
+import dao.ProfileDAO;
 import dao.RecetteDAO;
 import dao.UstensileDAO;
 
@@ -15,6 +16,7 @@ public class Main extends Application {
 		RecetteDAO recetteDao = new RecetteDAO();
 		IngredientDAO ingrDao = new IngredientDAO();
 		UstensileDAO ustDao = new UstensileDAO();
+		ProfileDAO pDao = new ProfileDAO();
 		
 		try {
 			BorderPane root = new BorderPane();
@@ -23,10 +25,8 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-			Ustensile u = new Ustensile("Casserole");
-			ustDao.create(u);
 			
-			for(Ustensile r : ustDao.getAll()) {
+			for(Recette r : recetteDao.getAll()) {
 				System.out.println(r);
 			}
 			
