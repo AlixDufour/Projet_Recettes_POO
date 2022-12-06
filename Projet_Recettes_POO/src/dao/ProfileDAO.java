@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -75,7 +76,25 @@ List<Profile> profiles = new ArrayList<Profile>();
 
 	@Override
 	public void create(Profile t) {
-		// TODO Auto-generated method stub
+		
+		String sql = "INSERT INTO Profile(prenom,nom,regimeId) VALUES(?,?,?)";
+		
+		this.connect();
+		
+		try {
+			PreparedStatement pstmt = this.conn.prepareStatement(sql);
+			pstmt.setString(1, t.getPrenom());
+			pstmt.setString(2, t.getNom());
+			pstmt.setInt(3, t.getRegimeId());
+
+			pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		this.closeConnection();
+
 		
 	}
 
