@@ -1,24 +1,20 @@
 package dao;
-import java.util.ArrayList;
-import java.util.List;
 
-import application.Recette;
-import dao.Dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RecetteDAO implements Dao<Recette>{
+import application.Ingredient;
+import application.Recette;
 
-	
-	private Connection conn;
-	
-	public RecetteDAO() {
-		conn = null;
-	}
+public class IngredientDAO implements Dao<Ingredient> {
+
+	Connection conn;
 	
 	private void connect() {
         try {
@@ -45,24 +41,23 @@ public class RecetteDAO implements Dao<Recette>{
         }
 	}
 	
+	
 	@Override
-	public List<Recette> getAll() {
+	public List<Ingredient> getAll() {
+		// TODO Auto-generated method stub
 		
-		List<Recette> recettes = new ArrayList<Recette>();
+		List<Ingredient> ingredients = new ArrayList<Ingredient>();
+		
+		String sql = "SELECT * from Ingredient";
 		
 		this.connect();
-		String sql = "SELECT * from Recette";
-		// Récupération infos générales d'une recette
+		
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				
-				EtapeDAO etapeDAO = new EtapeDAO();
-				
-				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6), etapeDAO.getAll(rs.getInt(1))));
-			
+				ingredients.add(new Ingredient(rs.getString(2)));
 			}
 			
 			
@@ -74,23 +69,21 @@ public class RecetteDAO implements Dao<Recette>{
 		
 		this.closeConnection();
 		// TODO Auto-generated method stub
-		return recettes;
+		return ingredients;
+		
 	}
 
 	@Override
-	public void create(Recette t) {
-		String sql = "INSERT INTO Recette(nom,description,duree,difficulte,prix) VALUES(?,?,?,?,?)";
+	public void create(Ingredient t) {
+		
+		String sql = "INSERT INTO Ingredient(nom) VALUES(?)";
 		
 		this.connect();
 		
 		try {
 			PreparedStatement pstmt = this.conn.prepareStatement(sql);
-			pstmt.setString(1, t.getName());
-			pstmt.setString(2, t.getDesc());
-			pstmt.setInt(3, t.getDuree());
-			pstmt.setString(4, t.getDifficulte());
-			pstmt.setString(5, t.getPrix());
-			
+			pstmt.setString(1, t.getNom());
+
 			pstmt.executeUpdate();
 			
 		}catch(SQLException e) {
@@ -98,20 +91,19 @@ public class RecetteDAO implements Dao<Recette>{
 		}
 		
 		this.closeConnection();
-		
-	}	
 
-	@Override
-	public void update(Recette t, String[] params) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public void delete(Recette t) {
+	public void update(Ingredient t, String[] params) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
+	@Override
+	public void delete(Ingredient t) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
