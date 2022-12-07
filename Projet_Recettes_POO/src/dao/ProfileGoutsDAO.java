@@ -2,28 +2,30 @@ package dao;
 
 import java.util.List;
 
-public class ProfileGoutsDAO implements Dao<Integer> {
+import application.Gout;
+
+public class ProfileGoutsDAO implements Dao<Gout> {
 
 	@Override
-	public List<Integer> getAll() {
+	public List<Gout> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void create(Integer t) {
+	public void create(Gout t) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void update(Integer t, String[] params) {
+	public void update(Gout t, String[] params) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void delete(Integer t) {
+	public void delete(Gout t) {
 		// TODO Auto-generated method stub
 
 	}

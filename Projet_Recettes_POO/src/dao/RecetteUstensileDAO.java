@@ -2,28 +2,30 @@ package dao;
 
 import java.util.List;
 
-public class RecetteUstensileDAO implements Dao<Integer> {
+import application.RecetteUstensile;
+
+public class RecetteUstensileDAO implements Dao<RecetteUstensile> {
 
 	@Override
-	public List<Integer> getAll() {
+	public List<RecetteUstensile> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void create(Integer t) {
+	public void create(RecetteUstensile t) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void update(Integer t, String[] params) {
+	public void update(RecetteUstensile t, String[] params) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void delete(Integer t) {
+	public void delete(RecetteUstensile t) {
 		// TODO Auto-generated method stub
 
 	}

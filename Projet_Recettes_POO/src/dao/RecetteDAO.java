@@ -59,19 +59,10 @@ public class RecetteDAO implements Dao<Recette>{
 			
 			while(rs.next()) {
 				
-				ArrayList<String> etapes = new ArrayList<>();
+				EtapeDAO etapeDAO = new EtapeDAO();
 				
-				PreparedStatement pstmt = conn.prepareStatement("SELECT Etape.num_etape, Etape.description FROM Etape WHERE Etape.recetteId = ?");
-				pstmt.setInt(1, rs.getInt(1));
-				ResultSet rs2 = pstmt.executeQuery();
-				
-				while(rs2.next()) {
-					etapes.add(rs2.getString(2));
-				}
-				
-				
-				
-				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6), etapes));
+				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6), etapeDAO.getAll(rs.getInt(1))));
+			
 			}
 			
 			

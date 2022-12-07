@@ -11,10 +11,10 @@ public class Recette {
 	String difficulte;
 	String prix;
 	
-	List<String> etapes;
+	List<Etape> etapes;
 	HashMap<Integer, String> regimes;
 	
-	public Recette(String nom, String desc, int duree, String diff, String prix, List <String >etapes) {
+	public Recette(String nom, String desc, int duree, String diff, String prix, List <Etape>etapes) {
 		this.nom = nom;
 		this.description = desc;
 		this.duree = duree;
@@ -31,8 +31,8 @@ public class Recette {
 		s += "Difficulté : " + this.difficulte + "\n";
 		s += "Prix : " + this.prix + "\n";
 		s += "Etapes : \n";
-		for(String d : this.etapes) {
-			s += d + "\n";
+		for(Etape e : this.etapes) {
+			s += e.getDescription() + "\n";
 		}
 		
 		return s;
