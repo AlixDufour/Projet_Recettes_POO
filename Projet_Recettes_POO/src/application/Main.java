@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
-import java.awt.ScrollPane;
 
 import dao.Dao;
 import dao.IngredientDAO;
@@ -25,9 +24,15 @@ public class Main extends Application {
 		ProfileDAO pDao = new ProfileDAO();
 		
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("./../scenes/MainScene.fxml"));
+			FXMLLoader test = new FXMLLoader();
+			test.setLocation(Main.class.getResource("/scenes/MainScene.fxml"));
+			
+			Parent root = test.load();
+					
 			Scene scene = new Scene(root,800,450);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
+			
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
