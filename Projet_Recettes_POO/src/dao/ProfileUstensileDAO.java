@@ -5,22 +5,19 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import application.Gout;
 import application.Ingredient;
-import application.Profile;
 import application.ProfileUstensile;
-import application.RecetteUstensile;
-import application.Regime;
 import application.Ustensile;
 
-public class ProfileDAO implements Dao<Profile> {
-	
-	private Connection conn;
+public class ProfileUstensileDAO implements Dao<ProfileUstensile> {
 
+
+private Connection conn;
+	
 	private void connect() {
         try {
             // db parameters
@@ -28,7 +25,6 @@ public class ProfileDAO implements Dao<Profile> {
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             
-        
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -47,36 +43,27 @@ public class ProfileDAO implements Dao<Profile> {
 	
 	
 	@Override
-	public List<Profile> getAll() {
-		
-List<Profile> profiles = new ArrayList<Profile>();
-		
-		String sql = "SELECT Profile.id, Profile.prenom, Profile.nom, Profile.regimeId, Regime.libelle FROM "
-				+ "Profile LEFT JOIN Regime ON Profile.regimeId = Regime.id ";
+	public List<ProfileUstensile> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<ProfileUstensile> getAll(int profileId) {
+
+		List<ProfileUstensile> equipement = new ArrayList<ProfileUstensile>();
 		
 		this.connect();
 		
+		String sql = "SELECT profileUstensile.profileId, profileUstensile.ustensileId, Ustensile.nom  FROM profileUstensile LEFT JOIN Ustensile ON "
+				+ "profileUstensile.ustensileId = Ustensile.id WHERE profileId = ?";
+		// Récupération infos générales d'une recette
 		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, profileId);
+			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				
-				ProfileGoutsDAO pgDao = new ProfileGoutsDAO();
-				List<Gout> profileGouts = pgDao.getAll(rs.getInt(1));
-				ArrayList<Ingredient> gouts = new ArrayList<>();
-				for(Gout g : profileGouts) {
-					gouts.add(g.getIngredient());
-				}
-				
-				ProfileUstensileDAO puDao = new ProfileUstensileDAO();
-				List<ProfileUstensile> profileUst = puDao.getAll(rs.getInt(1));
-				ArrayList<Ustensile> ustensiles = new ArrayList<>();
-				for(ProfileUstensile u : profileUst) {
-					ustensiles.add(u.getUstensile());
-				}
-				
-				profiles.add(new Profile(rs.getString(2), rs.getString(3), new Regime(rs.getInt(4), rs.getString(5)), gouts, ustensiles));
+				equipement.add(new ProfileUstensile(rs.getInt(1), new Ustensile(rs.getInt(2), rs.getString(3))));
 			}
 			
 			
@@ -88,24 +75,23 @@ List<Profile> profiles = new ArrayList<Profile>();
 		
 		this.closeConnection();
 		// TODO Auto-generated method stub
+		return equipement;	
 		
-		return profiles;
-
 	}
-
+	
 	@Override
-	public void create(Profile t) {
+	public void create(ProfileUstensile t) {
 		
-		String sql = "INSERT INTO Profile(prenom,nom,regimeId) VALUES(?,?,?)";
+
+		String sql = "INSERT INTO profileUstensile(profileId,ustensileId) VALUES(?,?)";
 		
 		this.connect();
 		
 		try {
 			PreparedStatement pstmt = this.conn.prepareStatement(sql);
-			pstmt.setString(1, t.getPrenom());
-			pstmt.setString(2, t.getNom());
-			pstmt.setInt(3, t.getRegime().getId());
-
+			pstmt.setInt(1, t.getProfileId());
+			pstmt.setInt(2, t.getUstensile().getId());
+			
 			pstmt.executeUpdate();
 			
 		}catch(SQLException e) {
@@ -113,18 +99,17 @@ List<Profile> profiles = new ArrayList<Profile>();
 		}
 		
 		this.closeConnection();
-
 		
 	}
 
 	@Override
-	public void update(Profile t, String[] params) {
+	public void update(ProfileUstensile t, String[] params) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(Profile t) {
+	public void delete(ProfileUstensile t) {
 		// TODO Auto-generated method stub
 		
 	}

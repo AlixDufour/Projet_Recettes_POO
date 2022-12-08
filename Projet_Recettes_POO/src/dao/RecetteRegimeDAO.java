@@ -5,16 +5,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Ingredient;
-import application.Recette;
+import application.RecetteRegime;
+import application.RecetteUstensile;
+import application.Regime;
+import application.Ustensile;
 
-public class IngredientDAO implements Dao<Ingredient> {
-
-	Connection conn;
+public class RecetteRegimeDAO implements Dao<RecetteRegime> {
+	
+private Connection conn;
 	
 	private void connect() {
         try {
@@ -23,7 +24,6 @@ public class IngredientDAO implements Dao<Ingredient> {
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             
-
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -40,23 +40,28 @@ public class IngredientDAO implements Dao<Ingredient> {
         }
 	}
 	
-	
 	@Override
-	public List<Ingredient> getAll() {
+	public List<RecetteRegime> getAll() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public List<RecetteRegime> getAll(int recetteId) {
 		
-		List<Ingredient> ingredients = new ArrayList<Ingredient>();
 		
-		String sql = "SELECT * from Ingredient";
+		List<RecetteRegime> recettesRegime = new ArrayList<RecetteRegime>();
 		
 		this.connect();
-		
+		String sql = "SELECT RecetteRegime.recetteId, RecetteRegime.regimeId, Regime.libelle FROM RecetteRegime LEFT JOIN Regime ON "
+				+ "RecetteRegime.regimeId = Regime.id WHERE recetteId = ?";
+		// Récupération infos générales d'une recette
 		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, recetteId);
+			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				ingredients.add(new Ingredient(rs.getInt(1),rs.getString(2)));
+				recettesRegime.add(new RecetteRegime(rs.getInt(1), new Regime(rs.getInt(2), rs.getString(3))));
 			}
 			
 			
@@ -68,21 +73,22 @@ public class IngredientDAO implements Dao<Ingredient> {
 		
 		this.closeConnection();
 		// TODO Auto-generated method stub
-		return ingredients;
+		return recettesRegime;	
 		
 	}
 
 	@Override
-	public void create(Ingredient t) {
+	public void create(RecetteRegime t) {
 		
-		String sql = "INSERT INTO Ingredient(nom) VALUES(?)";
+		String sql = "INSERT INTO RecetteRegime(recetteId,regimeId) VALUES(?,?)";
 		
 		this.connect();
 		
 		try {
 			PreparedStatement pstmt = this.conn.prepareStatement(sql);
-			pstmt.setString(1, t.getNom());
-
+			pstmt.setInt(1, t.getRecetteId());
+			pstmt.setInt(2, t.getRegime().getId());
+			
 			pstmt.executeUpdate();
 			
 		}catch(SQLException e) {
@@ -90,19 +96,19 @@ public class IngredientDAO implements Dao<Ingredient> {
 		}
 		
 		this.closeConnection();
-
+		
 	}
 
 	@Override
-	public void update(Ingredient t, String[] params) {
+	public void update(RecetteRegime t, String[] params) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void delete(Ingredient t) {
+	public void delete(RecetteRegime t) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

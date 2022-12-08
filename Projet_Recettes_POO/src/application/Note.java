@@ -10,4 +10,16 @@ public class Note {
 		this.recetteId = recetteId;
 		this.note = note;
 	}
+	
+	public int getProfileId() {return this.profileId;}
+	public int getRecetteId() {return this.recetteId;}
+	public int getNote() {return this.note;}
+	
+	public String toString() {
+		String s = "Profile : " + this.profileId + "\n"; 
+		s += "Recette : " + this.recetteId + "\n"; 
+		s += "Note : " + this.note + "/5 \n"; 
+		
+		return s;
+	}
 }

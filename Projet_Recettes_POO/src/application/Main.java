@@ -1,5 +1,6 @@
 package application;
 import dao.IngredientDAO;
+import dao.NoteDAO;
 import dao.ProfileDAO;
 import dao.RecetteDAO;
 import dao.UstensileDAO;
@@ -18,6 +19,7 @@ public class Main extends Application {
 		UstensileDAO ustDao = new UstensileDAO();
 		ProfileDAO pDao = new ProfileDAO();
 		Modele model = new Modele();
+		NoteDAO notesDao = new NoteDAO();
 		
 		try {
 			FXMLLoader test = new FXMLLoader();
@@ -35,9 +37,13 @@ public class Main extends Application {
 			primaryStage.show();
 			
 			
-			for (Recette r : recetteDao.getAll()) {
-				System.out.println(r);
+			
+			for (Note n : notesDao.getAll()) {
+				System.out.println(n);
 			}
+			
+			System.out.println(notesDao.getNoteByIDs(2, 0));
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();

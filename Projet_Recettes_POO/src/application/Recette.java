@@ -14,11 +14,10 @@ public class Recette {
 	List<Etape> etapes;
 	List<Ustensile> ustensiles;
 	List<QuantiteIngredient> ingredients;
-	
-	HashMap<Integer, String> regimes;
+	List<Regime> regimes;
 	
 	public Recette(String nom, String desc, int duree, String diff, String prix, List <Etape>etapes, List<Ustensile> ustensiles, 
-			List<QuantiteIngredient> ingr) {
+			List<QuantiteIngredient> ingr, List<Regime> regimes) {
 		this.nom = nom;
 		this.description = desc;
 		this.duree = duree;
@@ -27,8 +26,7 @@ public class Recette {
 		this.etapes = etapes;
 		this.ustensiles = ustensiles;
 		this.ingredients = ingr;
-		
-		regimes = null;
+		this.regimes = regimes;
 	}
 	
 	public String toString() {
@@ -50,6 +48,11 @@ public class Recette {
 		s += "Ingredients : \n";
 		for(QuantiteIngredient i : this.ingredients) {
 			s += i.getIngredient().getNom() + " : "+ i.getQuantite() + " " + i.getTypeQuantite().getLibelle() + "\n";
+		}
+		
+		s += "Convient aux régimes : \n";
+		for(Regime r : this.regimes) {
+			s += r.getLibelle() + "\n";
 		}
 		
 		return s;

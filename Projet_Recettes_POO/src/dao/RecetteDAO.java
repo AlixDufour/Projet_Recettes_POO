@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.Recette;
+import application.RecetteRegime;
 import application.RecetteUstensile;
+import application.Regime;
 import application.Ustensile;
 import dao.Dao;
 import java.sql.Connection;
@@ -70,8 +72,16 @@ public class RecetteDAO implements Dao<Recette>{
 				}
 				QuantiteIngredientDAO qiDao = new QuantiteIngredientDAO();
 				
+				RecetteRegimeDAO rrDao = new RecetteRegimeDAO();
+				List<RecetteRegime> rregimes = rrDao.getAll(rs.getInt(1));
+				ArrayList<Regime> regimes = new ArrayList<>();
+				for(RecetteRegime rr : rregimes) {
+					regimes.add(rr.getRegime());
+				}
+				
+				
 				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6),
-						etapeDAO.getAll(rs.getInt(1)),ustensiles, qiDao.getAll(rs.getInt(1))));
+						etapeDAO.getAll(rs.getInt(1)),ustensiles, qiDao.getAll(rs.getInt(1)), regimes));
 
 			}
 			
