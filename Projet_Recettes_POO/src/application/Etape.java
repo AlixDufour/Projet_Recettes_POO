@@ -11,5 +11,7 @@ public class Etape {
 		this.description = description;
 	}
 	
+	public int getRecetteId() {return this.recetteId;}
+	public int getNumEtape() {return this.num_etape;}
 	public String getDescription() {return this.description;}
 }

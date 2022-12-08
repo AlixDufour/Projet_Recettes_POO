@@ -57,7 +57,7 @@ public class IngredientDAO implements Dao<Ingredient> {
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				ingredients.add(new Ingredient(rs.getString(2)));
+				ingredients.add(new Ingredient(rs.getInt(1),rs.getString(2)));
 			}
 			
 			

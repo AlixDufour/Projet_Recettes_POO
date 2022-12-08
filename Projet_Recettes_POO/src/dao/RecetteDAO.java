@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.Recette;
+import application.RecetteUstensile;
+import application.Ustensile;
 import dao.Dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -60,9 +62,17 @@ public class RecetteDAO implements Dao<Recette>{
 			while(rs.next()) {
 				
 				EtapeDAO etapeDAO = new EtapeDAO();
+				RecetteUstensileDAO ruDao = new RecetteUstensileDAO();
+				List<RecetteUstensile> rustensiles = ruDao.getAll(rs.getInt(1));
+				ArrayList<Ustensile> ustensiles = new ArrayList<>();
+				for(RecetteUstensile ru : rustensiles) {
+					ustensiles.add(ru.getUstensile());
+				}
+				QuantiteIngredientDAO qiDao = new QuantiteIngredientDAO();
 				
-				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6), etapeDAO.getAll(rs.getInt(1))));
-			
+				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6),
+						etapeDAO.getAll(rs.getInt(1)),ustensiles, qiDao.getAll(rs.getInt(1))));
+
 			}
 			
 			

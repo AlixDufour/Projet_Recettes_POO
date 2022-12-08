@@ -75,7 +75,24 @@ public class EtapeDAO implements Dao<Etape> {
 
 	@Override
 	public void create(Etape t) {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO Etape(recetteId,num_etape,description) VALUES(?,?,?)";
+		
+		this.connect();
+		
+		try {
+			PreparedStatement pstmt = this.conn.prepareStatement(sql);
+			pstmt.setInt(1, t.getRecetteId());
+			pstmt.setInt(2, t.getNumEtape());
+			pstmt.setString(3, t.getDescription());
+
+			
+			pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		this.closeConnection();
 		
 	}
 

@@ -55,7 +55,7 @@ public class UstensileDAO implements Dao<Ustensile> {
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				ingredients.add(new Ustensile(rs.getString(2)));
+				ingredients.add(new Ustensile(rs.getInt(1),rs.getString(2)));
 			}
 			
 			
