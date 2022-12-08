@@ -14,35 +14,15 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		
-		RecetteDAO recetteDao = new RecetteDAO();
-		IngredientDAO ingrDao = new IngredientDAO();
-		UstensileDAO ustDao = new UstensileDAO();
-		ProfileDAO pDao = new ProfileDAO();
-		Modele model = new Modele();
-		NoteDAO notesDao = new NoteDAO();
+
+		Modele model = new Modele(primaryStage);
 		
 		try {
-			FXMLLoader test = new FXMLLoader();
-			test.setLocation(Main.class.getResource("/scenes/MainScene.fxml"));
 			
-			Parent root = test.load();
-			MainController mainController = test.getController();
-			mainController.setModele(model);
-					
-			Scene scene = new Scene(root,800,450);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			model.switchScene(CreationScenes.creerChoixProfileScene(model));
 			
-			
-			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-			
-			
-			for (Note n : notesDao.getAll()) {
-				System.out.println(n);
-			}
-			
-			System.out.println(notesDao.getNoteByIDs(2, 0));
 			
 			
 		} catch(Exception e) {
