@@ -46,7 +46,7 @@
                               <ChoiceBox prefWidth="150.0" />
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="154.0" prefWidth="470.0">
                            <children>
                               <Label prefHeight="30.0" prefWidth="90.0" text="Image du profil">
                                  <HBox.margin>
@@ -58,6 +58,16 @@
                                     <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
                                  </image>
                               </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label prefHeight="34.0" prefWidth="118.0" text="Supprimer le profil">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Button mnemonicParsing="false" text="Supprimer" />
                            </children>
                         </HBox>
                      </children>
