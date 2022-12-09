@@ -87,4 +87,20 @@ public class CreationScenes {
 		return scene;
 	}
 	
+	public static Scene creerFormulaireRecetteScene(Modele model) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/scenes/RecetteForm.fxml"));
+		
+		Parent root = loader.load();
+		
+		// A faire : Controller à récup pour appeler setModele comme au dessus
+		RecetteFormController controller = loader.getController();
+		controller.setModele(model);
+
+		Scene scene = new Scene(root,800,450);
+		scene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("bootstrap.css")).toString());
+		
+		return scene;
+	}
+	
 }

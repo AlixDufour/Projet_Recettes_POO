@@ -28,6 +28,9 @@ public class MainController implements Observateur, Initializable {
 	
 	@FXML 
 	private Button returnButton;
+	
+	@FXML
+	private Button ajouterRecette;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -69,6 +72,14 @@ public class MainController implements Observateur, Initializable {
 				e1.printStackTrace();
 			}
 		});
+		
+		ajouterRecette.setOnMouseClicked(e -> {
+			try {
+				model.switchScene(CreationScenes.creerFormulaireRecetteScene(model));
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});		
 	}
 
 	@Override
