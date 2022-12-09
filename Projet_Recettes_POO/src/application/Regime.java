@@ -9,6 +9,11 @@ public class Regime {
 		this.libelle = libelle;
 	}
 	
+	public Regime() {
+		id = 0;
+		libelle = "classique";
+	}
+
 	public int getId() {return this.id;}
 	public String getLibelle() {return this.libelle;}
 }

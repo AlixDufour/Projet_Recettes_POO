@@ -20,6 +20,14 @@ public class Profile {
 		this.ustensiles = ustensiles;
 	}
 	
+	public Profile() {
+		this.prenom = "prenom";
+		this.nom = "nom";
+		this.regime = new Regime();
+		this.gouts = new ArrayList<Ingredient>();
+		this.ustensiles = new ArrayList<Ustensile>();
+	}
+
 	public String getPrenom() {return this.prenom;}
 	public String getNom() {return this.nom;}
 	public Regime getRegime() {return this.regime;}

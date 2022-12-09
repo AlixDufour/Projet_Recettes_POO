@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -7,6 +8,7 @@ import dao.RecetteDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 public class MainController implements Observateur, Initializable {
@@ -16,6 +18,8 @@ public class MainController implements Observateur, Initializable {
 
 	@FXML
 	private HBox listeRecettes;
+	@FXML
+	private ImageView profileButton;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -25,6 +29,14 @@ public class MainController implements Observateur, Initializable {
 			Label label = new Label(r.getName());
 			listeRecettes.getChildren().add(label);
 		}
+
+		profileButton.setOnMouseClicked(e -> {
+			try {
+				model.switchScene(CreationScenes.creerProfileScene(model));
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
 	}
 
 	@Override

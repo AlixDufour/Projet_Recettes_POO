@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -12,9 +13,9 @@
 
 <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ChoixProfileController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.79998779296875" minWidth="10.0" prefWidth="13.600006103515625" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="519.9999755859375" minWidth="10.0" prefWidth="519.9999755859375" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.199951171875" minWidth="10.0" prefWidth="16.4000244140625" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.79998779296875" minWidth="6.399999284744261" prefWidth="6.399999284744261" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="575.999951171875" minWidth="10.0" prefWidth="575.999951171875" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.199951171875" minWidth="5.6000488281249545" prefWidth="5.6000488281249545" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
@@ -30,17 +31,9 @@
             <Insets bottom="30.0" />
          </GridPane.margin>
       </Text>
-      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <columnConstraints>
-          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints />
-        </rowConstraints>
+      <FlowPane fx:id="listeProfils" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="135.0" prefWidth="135.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="135.0" prefWidth="135.0">
                <children>
                   <ImageView fitHeight="135.0" fitWidth="135.0" nodeOrientation="INHERIT" pickOnBounds="true">
                      <image>
@@ -53,11 +46,8 @@
                      </font>
                   </Text>
                </children>
-               <GridPane.margin>
-                  <Insets right="15.0" />
-               </GridPane.margin>
             </Pane>
-            <Pane layoutX="72.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="135.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="135.0" prefWidth="135.0">
                <children>
                   <ImageView fitHeight="135.0" fitWidth="135.0" nodeOrientation="INHERIT" pickOnBounds="true">
                      <image>
@@ -73,11 +63,8 @@
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
-               <GridPane.margin>
-                  <Insets left="15.0" />
-               </GridPane.margin>
             </Pane>
          </children>
-      </GridPane>
+      </FlowPane>
    </children>
 </GridPane>
