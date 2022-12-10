@@ -9,7 +9,7 @@
       <HBox prefHeight="36.0" prefWidth="600.0" spacing="15.0">
          <children>
             <Label prefHeight="26.0" prefWidth="155.0" text="Convient pour les régimes :" />
-            <ChoiceBox fx:id="form_regime" prefWidth="150.0" />
+            <ChoiceBox prefWidth="150.0" />
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

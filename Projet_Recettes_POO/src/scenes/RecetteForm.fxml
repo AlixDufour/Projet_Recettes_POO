@@ -110,7 +110,7 @@
                                           <TextField />
                                           <Label prefHeight="25.0" prefWidth="46.0" text="Quantité" />
                                           <TextField />
-                                          <Button fx:id="ajouterIngrédient" alignment="TOP_RIGHT" mnemonicParsing="false" text="+" />
+                                          <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#ajouterLigneIngredient" text="+" />
                                        </children>
                                        <VBox.margin>
                                           <Insets />
@@ -134,7 +134,7 @@
                                        <children>
                                           <Label prefHeight="26.0" prefWidth="106.0" text="Nom de l'ustensile" />
                                           <TextField />
-                                          <Button fx:id="ajouterUstensile" alignment="TOP_RIGHT" mnemonicParsing="false" text="+" />
+                                          <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#ajouterLigneUstensile" text="+" />
                                        </children>
                                        <VBox.margin>
                                           <Insets />
@@ -158,7 +158,7 @@
                                        <children>
                                           <Label prefHeight="26.0" prefWidth="106.0" text="Etape n°1" />
                                           <TextArea prefHeight="100.0" prefWidth="370.0" />
-                                          <Button fx:id="ajouterEtape" alignment="TOP_RIGHT" mnemonicParsing="false" text="+" />
+                                          <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#ajouterLigneEtape" text="+" />
                                        </children>
                                        <VBox.margin>
                                           <Insets />
@@ -182,7 +182,7 @@
                                        <children>
                                           <Label prefHeight="26.0" prefWidth="155.0" text="Convient pour les régimes :" />
                                           <ChoiceBox fx:id="form_regime" prefWidth="150.0" />
-                                          <Button fx:id="ajouterRegime" alignment="TOP_RIGHT" mnemonicParsing="false" text="+" />
+                                          <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#ajouterLigneRegime" text="+" />
                                        </children>
                                        <VBox.margin>
                                           <Insets />
@@ -204,12 +204,12 @@
             </TabPane>
             <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="enregistrerRecette" contentDisplay="RIGHT" mnemonicParsing="false" text="Enregistrer">
+                  <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#enregistrerRecette" text="Enregistrer">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="retourAccueil" contentDisplay="RIGHT" mnemonicParsing="false" text="Annuler">
+                  <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#retourAccueil" text="Annuler">
                      <HBox.margin>
                         <Insets bottom="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
