@@ -21,7 +21,6 @@ import javafx.scene.layout.VBox;
 public class MainController implements Observateur, Initializable {
 
 	private Modele model;
-	private ArrayList<Recette> recettes;
 
 	@FXML
 	private GridPane listeRecettes;
@@ -40,8 +39,7 @@ public class MainController implements Observateur, Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		listeRecettes.getChildren().clear();
-		//recettes = this.model.filtrerRecettes("", true);
-		this.recettes = new ArrayList<>();
+
 
 		profileButton.setOnMouseClicked(e -> {
 			try {
@@ -71,7 +69,6 @@ public class MainController implements Observateur, Initializable {
 	@Override
 	public void reagir() {
 		
-		//recettes = this.model.getRecetteFiltrees();
 		listeRecettes.getChildren().clear();
 		
 		int maxColumnNumber = 4;
@@ -101,7 +98,7 @@ public class MainController implements Observateur, Initializable {
 	public void setModele(Modele m) {
 		this.model = m;
 		model.ajouterObservateur(this);
-		this.model.filtrerRecettes("", false);
+		this.model.filtrerRecettes(champRecherche.getText(), true);
 	}
 
 	

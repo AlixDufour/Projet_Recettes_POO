@@ -57,11 +57,11 @@ public class Modele {
 	
 	
 	public void filtrerRecettes(String champRecherche, boolean appliquerPreferences){
-		this.recettesFiltrees = new ArrayList<>(this.recettes);
 		
+		this.recettesFiltrees = new ArrayList<>(this.recettes);
 		// On itère dans chaque recette pour comparer avec les préférences/ catégorie et champ de recherche indiqué de l'utilisateur
 		for(Recette r : this.recettes) {
-			
+		
 				boolean correspondance = false;
 				
 				// Recherche d'une correspondance dans les noms des recettes
@@ -69,18 +69,19 @@ public class Modele {
 				
 				// Recherche d'une correspondance dans les ingrédients
 				else
-					{for(QuantiteIngredient i : r.getIngredients()) {
+					{
+					for(QuantiteIngredient i : r.getIngredients()) {
 						if (i.getIngredient().getNom().toLowerCase().contains(champRecherche.toLowerCase())) correspondance = true;
 					}
 				}
 				if (correspondance == false) this.recettesFiltrees.remove(r);
 				
-				
 				// Si les préférences sont activée, on filtre
 				if (appliquerPreferences == true) {
 					
 					// On regarde parmi les ingrédients
-					for(Ingredient g : this.activeProfile.gouts) {
+
+					for(Ingredient g : this.activeProfile.gouts) {				
 						{for(QuantiteIngredient i : r.getIngredients()) {
 							if(g.getId() == i.getIngredient().getId()) {
 									this.recettesFiltrees.remove(r);
