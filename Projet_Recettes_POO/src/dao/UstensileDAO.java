@@ -102,7 +102,28 @@ public class UstensileDAO implements Dao<Ustensile> {
 	@Override
 	public void delete(Ustensile t) {
 		// TODO Auto-generated method stub
+	}
+	
+	public List<String> getUstensilesNames(){
+		String sql = "SELECT nom FROM Ustensile";
 
+		List<String> ustensiles = new ArrayList<String>();
+		this.connect();
+
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				ustensiles.add(rs.getString(1));
+			}
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		this.closeConnection();
+		return ustensiles;	
 	}
 
 }

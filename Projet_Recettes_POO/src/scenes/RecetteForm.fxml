@@ -107,7 +107,7 @@
                                     <HBox prefHeight="36.0" prefWidth="600.0" spacing="15.0">
                                        <children>
                                           <Label prefHeight="26.0" prefWidth="106.0" text="Nom de l'ingrédient" />
-                                          <TextField />
+                                          <ChoiceBox fx:id="form_ingredient" prefWidth="150.0" />
                                           <Label prefHeight="25.0" prefWidth="46.0" text="Quantité" />
                                           <TextField />
                                           <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#ajouterLigneIngredient" text="+" />
@@ -133,7 +133,7 @@
                                     <HBox prefHeight="36.0" prefWidth="600.0" spacing="15.0">
                                        <children>
                                           <Label prefHeight="26.0" prefWidth="106.0" text="Nom de l'ustensile" />
-                                          <TextField />
+                                          <ChoiceBox fx:id="form_ustensile" prefWidth="150.0" />
                                           <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#ajouterLigneUstensile" text="+" />
                                        </children>
                                        <VBox.margin>
