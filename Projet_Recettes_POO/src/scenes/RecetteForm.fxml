@@ -199,6 +199,31 @@
                         </ScrollPane>
                      </content>
                   </Tab>
+                  <Tab text="Catégories">
+                     <content>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="287.0" prefWidth="600.0">
+                           <content>
+                              <VBox fx:id="categorieBox" prefHeight="274.0" prefWidth="600.0">
+                                 <children>
+                                    <HBox prefHeight="36.0" prefWidth="600.0" spacing="15.0">
+                                       <children>
+                                          <Label prefHeight="26.0" prefWidth="60.0" text="Catégorie" />
+                                          <TextField />
+                                          <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#ajouterLigneCategorie" text="+" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </content>
+                  </Tab>
               </tabs>
                <VBox.margin>
                   <Insets />

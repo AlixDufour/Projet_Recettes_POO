@@ -39,7 +39,7 @@ public class RecetteFormController implements Initializable, Observateur {
 	private ChoiceBox<String> form_diff, form_regime, form_ingredient, form_type_quantite, form_ustensile;
 
 	@FXML
-	private VBox ingredientsBox, ustensilesBox, etapesBox, regimeBox;
+	private VBox ingredientsBox, ustensilesBox, etapesBox, regimeBox, categorieBox;
 
 	private int countEtapes;
 
@@ -155,6 +155,8 @@ public class RecetteFormController implements Initializable, Observateur {
 			rrd.create(rr);
 		}
 		
+		// TODO Enregistrement des catégories
+		
 		// TODO Affichage d'un message de succès
 		// Ou affichage d'un message d'erreur
 		redirect();
@@ -210,6 +212,16 @@ public class RecetteFormController implements Initializable, Observateur {
 			((ChoiceBox) form.getChildren().get(1)).setItems(regimesChoices);
 
 			regimeBox.getChildren().add((Node) form);
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void ajouterLigneCategorie(ActionEvent event) {
+		try {
+			HBox form = FXMLLoader.load(getClass().getResource("./../scenes/FormCategorie.fxml"));
+			categorieBox.getChildren().add((Node) form);
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
