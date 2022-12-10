@@ -11,6 +11,7 @@ import dao.QuantiteIngredientDAO;
 import dao.RecetteDAO;
 import dao.RecetteRegimeDAO;
 import dao.RecetteUstensileDAO;
+import dao.TypeQuantiteDAO;
 import dao.UstensileDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,6 +50,8 @@ public class RecetteFormController implements Initializable, Observateur {
 	private UstensileDAO udao;
 	
 	private RecetteRegimeDAO rrd;
+	
+	private TypeQuantiteDAO tqdao;
 
 	@Override
 	public void reagir() {
@@ -75,8 +78,11 @@ public class RecetteFormController implements Initializable, Observateur {
 		ObservableList<String> ingredientsChoices = FXCollections.observableArrayList(ingredients);
 		form_ingredient.setItems(ingredientsChoices);
 		
-		// Récupération des types de quantité 
-		ObservableList<String> typeQteChoices = FXCollections.observableArrayList("ml", "g");
+		// Récupération des types de quantité
+		//getNames
+		tqdao = new TypeQuantiteDAO();
+		typeQte = tqdao.getNames();
+		ObservableList<String> typeQteChoices = FXCollections.observableArrayList(typeQte);
 		form_type_quantite.setItems(typeQteChoices);
 
 		// Récupération des ustensiles
@@ -92,7 +98,6 @@ public class RecetteFormController implements Initializable, Observateur {
 	}
 
 	private void saveRecette() {
-
 		// Enregistrement de la nouvelle recette
 		RecetteDAO rdao = new RecetteDAO();
 		String nom = form_nom.getText();
@@ -136,7 +141,8 @@ public class RecetteFormController implements Initializable, Observateur {
 		for(Node i : box)  {
 			Ingredient tmp = idao.getIngredientId(((ChoiceBox<String>) ((HBox) i).getChildren().get(1)).getValue());
 			int qte = Integer.parseInt(((TextField) ((HBox) i).getChildren().get(3)).getText()); 
-			QuantiteIngredient qi = new QuantiteIngredient(id_recette, tmp, qte, null);
+			TypeQuantite tq = tqdao.gettypeQteId(((ChoiceBox<String>) ((HBox) i).getChildren().get(5)).getValue());
+			QuantiteIngredient qi = new QuantiteIngredient(id_recette, tmp, qte, tq);
 			qidao.create(qi);
 		}
 
