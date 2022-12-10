@@ -63,4 +63,9 @@ public class Recette {
 	public int getDuree() {return this.duree;}
 	public String getDifficulte() {return this.difficulte;}
 	public String getPrix() {return this.prix;}
+	
+	public List<Etape> getEtapes(){return this.etapes;}
+	public List<Ustensile> getUstensiles(){return this.ustensiles;}
+	public List<QuantiteIngredient> getIngredients(){return this.ingredients;}
+	public List<Regime> getRegimes(){return this.regimes;}
 }

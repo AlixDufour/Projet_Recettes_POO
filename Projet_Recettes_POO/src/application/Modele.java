@@ -2,7 +2,9 @@ package application;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+import dao.RecetteDAO;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -12,9 +14,13 @@ public class Modele {
 
 	private Stage stage;
 	private Profile activeProfile;
+	private ArrayList<Recette> recettes;
+	private ArrayList<Recette> recettesFiltrees;
 	
 	public Modele(Stage stage) {
 		this.stage = stage;
+		RecetteDAO rDao = new RecetteDAO();
+		recettes = (ArrayList<Recette>) rDao.getAll();
 		
 		// Sera affecté lors du choix du profil, soit profil déjà existant, soit création d'un nouveau profil
 		activeProfile = null;
@@ -47,5 +53,68 @@ public class Modele {
 		}
 		
 		this.notifierObservateur();
+	}
+	
+	
+	public void filtrerRecettes(String champRecherche, boolean appliquerPreferences){
+		this.recettesFiltrees = new ArrayList<>(this.recettes);
+		
+		// On itère dans chaque recette pour comparer avec les préférences/ catégorie et champ de recherche indiqué de l'utilisateur
+		for(Recette r : this.recettes) {
+			
+				boolean correspondance = false;
+				
+				// Recherche d'une correspondance dans les noms des recettes
+				if(r.getName().toLowerCase().contains(champRecherche.toLowerCase())) correspondance =true;
+				
+				// Recherche d'une correspondance dans les ingrédients
+				else
+					{for(QuantiteIngredient i : r.getIngredients()) {
+						if (i.getIngredient().getNom().toLowerCase().contains(champRecherche.toLowerCase())) correspondance = true;
+					}
+				}
+				if (correspondance == false) this.recettesFiltrees.remove(r);
+				
+				
+				// Si les préférences sont activée, on filtre
+				if (appliquerPreferences == true) {
+					
+					// On regarde parmi les ingrédients
+					for(Ingredient g : this.activeProfile.gouts) {
+						{for(QuantiteIngredient i : r.getIngredients()) {
+							if(g.getId() == i.getIngredient().getId()) {
+									this.recettesFiltrees.remove(r);
+									break;
+								}
+							}
+						}
+					}
+					
+					// On regarde parmi les ustensiles
+					for(Ustensile ru : r.getUstensiles()) {
+						boolean checkUstensile = false;
+						for(Ustensile u : this.activeProfile.ustensiles) {
+							if(u.getId() == ru.getId()) checkUstensile = true;
+						}
+						if(!checkUstensile) {
+							this.recettesFiltrees.remove(r);
+							break;
+						}
+					}
+					
+					boolean checkRegime = false;
+					for(Regime rr : r.getRegimes()) {
+						if(this.activeProfile.getRegime().getId() == rr.getId()) checkRegime = true; break;
+					}
+					if(!checkRegime) this.recettesFiltrees.remove(r);
+					
+				}
+		}
+		
+		this.notifierObservateur();
+	}
+	
+	public ArrayList<Recette> getRecetteFiltrees(){
+		return this.recettesFiltrees;
 	}
 }

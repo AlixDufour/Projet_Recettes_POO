@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import dao.RecetteDAO;
@@ -11,6 +12,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -19,7 +21,7 @@ import javafx.scene.layout.VBox;
 public class MainController implements Observateur, Initializable {
 
 	private Modele model;
-	private RecetteDAO recettes;
+	private ArrayList<Recette> recettes;
 
 	@FXML
 	private GridPane listeRecettes;
@@ -31,31 +33,15 @@ public class MainController implements Observateur, Initializable {
 	
 	@FXML
 	private Button ajouterRecette;
+	
+	@FXML
+	private TextField champRecherche;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		listeRecettes.getChildren().clear();
-		recettes = new RecetteDAO();
-		int maxColumnNumber = 4;
-		int x = 1;
-		int y = 1;
-		for (Recette r : recettes.getAll()) {
-			VBox vbox = new VBox();
-			Label label = new Label(r.getName());
-			
-			// Mise en forme de la vbox
-			vbox.getChildren().add(label);
-			vbox.setPadding(new Insets(30, 30, 30, 30));
-			vbox.setAlignment(Pos.CENTER); 
-			
-			listeRecettes.add(vbox, x, y);
-			x++;
-			// Si x dépasse le nombre de colonnes alors on passe à la ligne suivante
-			if(x > maxColumnNumber) {
-				x = 1;
-				y++;
-			}
-		}
+		//recettes = this.model.filtrerRecettes("", true);
+		this.recettes = new ArrayList<>();
 
 		profileButton.setOnMouseClicked(e -> {
 			try {
@@ -84,7 +70,30 @@ public class MainController implements Observateur, Initializable {
 
 	@Override
 	public void reagir() {
-		// TODO Auto-generated method stub
+		
+		//recettes = this.model.getRecetteFiltrees();
+		listeRecettes.getChildren().clear();
+		
+		int maxColumnNumber = 4;
+		int x = 1;
+		int y = 1;
+		for (Recette r : this.model.getRecetteFiltrees()) {
+			VBox vbox = new VBox();
+			Label label = new Label(r.getName());
+			
+			// Mise en forme de la vbox
+			vbox.getChildren().add(label);
+			vbox.setPadding(new Insets(30, 30, 30, 30));
+			vbox.setAlignment(Pos.CENTER); 
+			
+			listeRecettes.add(vbox, x, y);
+			x++;
+			// Si x dépasse le nombre de colonnes alors on passe à la ligne suivante
+			if(x > maxColumnNumber) {
+				x = 1;
+				y++;
+			}
+		}
 
 	}
 
@@ -92,6 +101,11 @@ public class MainController implements Observateur, Initializable {
 	public void setModele(Modele m) {
 		this.model = m;
 		model.ajouterObservateur(this);
+		this.model.filtrerRecettes("", false);
 	}
 
+	
+	public void rechercher() {
+		this.model.filtrerRecettes(champRecherche.getText(), true);
+	}
 }

@@ -36,8 +36,8 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <TextField maxWidth="-Infinity" prefHeight="26.0" prefWidth="281.0" promptText="Recherche" />
-                        <Button mnemonicParsing="false" text="Rechercher" />
+                        <TextField fx:id="champRecherche" maxWidth="-Infinity" prefHeight="26.0" prefWidth="281.0" promptText="Recherche" />
+                        <Button mnemonicParsing="false" onAction="#rechercher" text="Rechercher" />
                         <Button fx:id="ajouterRecette" mnemonicParsing="false" text="Ajouter une recette">
                            <HBox.margin>
                               <Insets left="15.0" />
