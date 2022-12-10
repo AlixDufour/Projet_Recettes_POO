@@ -56,12 +56,23 @@ public class Modele {
 	}
 	
 	
-	public void filtrerRecettes(String champRecherche, boolean appliquerPreferences){
+	public void filtrerRecettes(String champRecherche,String categorie,boolean appliquerPreferences){
 		
 		this.recettesFiltrees = new ArrayList<>(this.recettes);
 		// On itère dans chaque recette pour comparer avec les préférences/ catégorie et champ de recherche indiqué de l'utilisateur
 		for(Recette r : this.recettes) {
-		
+				
+				// Comparaison de la catégorie avec les tags
+				if(categorie != "") {
+					boolean checkTag = false;
+					for(String t : r.getTags()) {
+					
+						if(categorie.toLowerCase().compareTo(t) == 0) checkTag = true;
+					}
+					if(!checkTag) {this.recettesFiltrees.remove(r); continue;}
+					
+				}
+				
 				boolean correspondance = false;
 				
 				// Recherche d'une correspondance dans les noms des recettes
@@ -105,7 +116,7 @@ public class Modele {
 					
 					boolean checkRegime = false;
 					for(Regime rr : r.getRegimes()) {
-						if(this.activeProfile.getRegime().getId() == rr.getId()) checkRegime = true; break;
+						if(this.activeProfile.getRegime().getId() == rr.getId()) {checkRegime = true; break;}
 					}
 					if(!checkRegime) this.recettesFiltrees.remove(r);
 					

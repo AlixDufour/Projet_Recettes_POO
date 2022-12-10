@@ -1,5 +1,8 @@
 package application;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,19 +13,21 @@ public class Recette {
 	int duree;
 	String difficulte;
 	String prix;
+	String tags;
 	
 	List<Etape> etapes;
 	List<Ustensile> ustensiles;
 	List<QuantiteIngredient> ingredients;
 	List<Regime> regimes;
 	
-	public Recette(String nom, String desc, int duree, String diff, String prix, List <Etape>etapes, List<Ustensile> ustensiles, 
+	public Recette(String nom, String desc, int duree, String diff, String prix, String tags, List <Etape>etapes, List<Ustensile> ustensiles, 
 			List<QuantiteIngredient> ingr, List<Regime> regimes) {
 		this.nom = nom;
 		this.description = desc;
 		this.duree = duree;
 		this.difficulte = diff;
 		this.prix = prix;
+		this.tags = tags;
 		this.etapes = etapes;
 		this.ustensiles = ustensiles;
 		this.ingredients = ingr;
@@ -63,6 +68,14 @@ public class Recette {
 	public int getDuree() {return this.duree;}
 	public String getDifficulte() {return this.difficulte;}
 	public String getPrix() {return this.prix;}
+	
+	public List<String> getTags(){
+		return new ArrayList<String>(Arrays.asList(tags.split(";")));
+	} 
+	
+	public void addTag(String t) {
+		tags += ";"+t;
+	}
 	
 	public List<Etape> getEtapes(){return this.etapes;}
 	public List<Ustensile> getUstensiles(){return this.ustensiles;}

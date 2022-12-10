@@ -35,6 +35,8 @@ public class MainController implements Observateur, Initializable {
 	
 	@FXML
 	private TextField champRecherche;
+	
+	private String categorie = "";
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -98,11 +100,11 @@ public class MainController implements Observateur, Initializable {
 	public void setModele(Modele m) {
 		this.model = m;
 		model.ajouterObservateur(this);
-		this.model.filtrerRecettes(champRecherche.getText(), true);
+		this.model.filtrerRecettes(champRecherche.getText(),categorie ,true);
 	}
 
 	
 	public void rechercher() {
-		this.model.filtrerRecettes(champRecherche.getText(), true);
+		this.model.filtrerRecettes(champRecherche.getText(),categorie, true);
 	}
 }
