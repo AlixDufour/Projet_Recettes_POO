@@ -33,7 +33,7 @@
                                     <Insets right="50.0" />
                                  </HBox.margin>
                               </Label>
-                              <TextField text="Océane" />
+                              <TextField fx:id="editName" text="patate" />
                            </children>
                         </HBox>
                         <HBox prefHeight="62.0" prefWidth="470.0">
@@ -43,7 +43,7 @@
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </Label>
-                              <ChoiceBox prefWidth="150.0" />
+                              <ChoiceBox fx:id="regimeSelect" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="154.0" prefWidth="470.0">
@@ -67,7 +67,7 @@
                                     <Insets right="30.0" />
                                  </HBox.margin>
                               </Label>
-                              <Button mnemonicParsing="false" text="Supprimer" />
+                              <Button mnemonicParsing="false" text="Supprimer" textAlignment="CENTER" />
                            </children>
                         </HBox>
                      </children>
@@ -101,27 +101,11 @@
                         </VBox>
                         <ScrollPane hbarPolicy="NEVER">
                            <content>
-                              <VBox prefHeight="400.0" prefWidth="274.0">
+                              <VBox fx:id="listeIngredients" prefHeight="400.0" prefWidth="274.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="18.0" prefWidth="268.0" text="Ingrédients que je n'apprécie pas">
                                        <font>
                                           <Font size="16.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="268.0" text="Ingrédient 1">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="270.0" text="Ingrédient 2">
-                                       <font>
-                                          <Font size="14.0" />
                                        </font>
                                        <VBox.margin>
                                           <Insets top="15.0" />

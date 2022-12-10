@@ -2,10 +2,8 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import dao.RecetteDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -15,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class MainController implements Observateur, Initializable {
@@ -24,6 +21,7 @@ public class MainController implements Observateur, Initializable {
 
 	@FXML
 	private GridPane listeRecettes;
+
 	@FXML
 	private ImageView profileButton;
 	

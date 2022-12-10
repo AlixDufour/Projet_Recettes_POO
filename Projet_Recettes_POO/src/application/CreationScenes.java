@@ -48,7 +48,7 @@ public class CreationScenes {
 		// A faire : Controller à récup pour appeler setModele comme au dessus
 		ProfileController controller = loader.getController();
 		controller.setModele(model);
-
+		controller.updateProfileInfos();
 		Scene scene = new Scene(root,800,450);
 		scene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("bootstrap.css")).toString());
 		

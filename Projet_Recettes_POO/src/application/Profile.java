@@ -31,6 +31,10 @@ public class Profile {
 	public String getPrenom() {return this.prenom;}
 	public String getNom() {return this.nom;}
 	public Regime getRegime() {return this.regime;}
+
+	public List<Ingredient> getGouts() {
+		return this.gouts;
+	}
 	
 	public String toString() {
 		String s = "Prénom : " + this.prenom + "\n";

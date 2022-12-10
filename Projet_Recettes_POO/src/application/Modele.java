@@ -2,7 +2,6 @@ package application;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import dao.RecetteDAO;
 import javafx.scene.Scene;
@@ -34,6 +33,10 @@ public class Modele {
 		for (Observateur o : obs) {
 			o.reagir();
 		}
+	}
+
+	public Profile getActiveProfile() {
+		return activeProfile;
 	}
 		
 	// Changement de scène
