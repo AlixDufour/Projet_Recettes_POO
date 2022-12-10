@@ -125,5 +125,29 @@ public class UstensileDAO implements Dao<Ustensile> {
 		this.closeConnection();
 		return ustensiles;	
 	}
+	
+	public Ustensile getUstensileId(String name){
+		String sql = "SELECT id FROM Ustensile where nom = ?";
+		
+		this.connect();
+		
+		Ustensile ustensile = null;
+
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				ustensile = new Ustensile(rs.getInt(1), name);
+			}
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		this.closeConnection();
+		return ustensile;
+	}
 
 }

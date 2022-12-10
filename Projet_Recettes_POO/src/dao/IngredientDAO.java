@@ -127,4 +127,27 @@ public class IngredientDAO implements Dao<Ingredient> {
 		return ingredients;	
 	}
 
+	public Ingredient getIngredientId(String name){
+		String sql = "SELECT id FROM Ingredient where nom = ?";
+		
+		this.connect();
+		
+		Ingredient ingredient = null;
+
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				ingredient = new Ingredient(rs.getInt(1), name);
+			}
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		this.closeConnection();
+		return ingredient;
+	}
 }

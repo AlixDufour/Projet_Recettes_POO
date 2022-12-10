@@ -132,5 +132,29 @@ public class RecetteRegimeDAO implements Dao<RecetteRegime> {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public Regime getRegimeId(String name){
+		String sql = "SELECT id FROM Regime where libelle = ?";
+		
+		this.connect();
+		
+		Regime regime = null;
+
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				regime = new Regime(rs.getInt(1), name);
+			}
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		this.closeConnection();
+		return regime;
+	}
 
 }

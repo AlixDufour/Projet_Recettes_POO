@@ -106,10 +106,12 @@
                                  <children>
                                     <HBox prefHeight="36.0" prefWidth="600.0" spacing="15.0">
                                        <children>
-                                          <Label prefHeight="26.0" prefWidth="106.0" text="Nom de l'ingrédient" />
+                                          <Label prefHeight="26.0" prefWidth="57.0" text="Ingrédient" />
                                           <ChoiceBox fx:id="form_ingredient" prefWidth="150.0" />
-                                          <Label prefHeight="25.0" prefWidth="46.0" text="Quantité" />
-                                          <TextField />
+                                          <Label prefHeight="26.0" prefWidth="29.0" text="Qté" />
+                                          <TextField prefHeight="26.0" prefWidth="49.0" />
+                                          <Label prefHeight="27.0" prefWidth="73.0" text="Type quantité" />
+                                          <ChoiceBox fx:id="form_type_quantite" prefHeight="26.0" prefWidth="81.0" />
                                           <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#ajouterLigneIngredient" text="+" />
                                        </children>
                                        <VBox.margin>

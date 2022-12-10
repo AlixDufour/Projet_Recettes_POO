@@ -6,14 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox prefHeight="36.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-         <children>
-            <Label prefHeight="26.0" prefWidth="106.0" text="Nom de l'ingrédient" />
-      <ChoiceBox prefWidth="150.0" />
-            <Label prefHeight="25.0" prefWidth="46.0" text="Quantité" />
-            <TextField />
-         </children>
-         <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-         </padding>
-      </HBox>
+<HBox prefHeight="36.0" prefWidth="600.0" spacing="15.0">
+                                       <children>
+                                          <Label prefHeight="26.0" prefWidth="57.0" text="Ingrédient" />
+                                          <ChoiceBox prefWidth="150.0" />
+                                          <Label prefHeight="26.0" prefWidth="29.0" text="Qté" />
+                                          <TextField prefHeight="26.0" prefWidth="49.0" />
+                                          <Label prefHeight="27.0" prefWidth="73.0" text="Type quantité" />
+                                          <ChoiceBox prefHeight="26.0" prefWidth="81.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </HBox>
