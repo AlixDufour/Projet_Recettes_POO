@@ -73,6 +73,10 @@ public class Recette {
 		return new ArrayList<String>(Arrays.asList(tags.split(";")));
 	} 
 	
+	public String getUnformatedTags() {
+		return this.tags;
+	}
+	
 	public void addTag(String t) {
 		tags += ";"+t;
 	}

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import application.Observateur;
 import dao.EtapeDAO;
 import dao.IngredientDAO;
 import dao.QuantiteIngredientDAO;
@@ -44,13 +45,13 @@ public class RecetteFormController implements Initializable, Observateur {
 	private int countEtapes;
 
 	private List<String> regimes, ingredients, ustensiles, typeQte;
-	
+
 	private IngredientDAO idao;
-	
+
 	private UstensileDAO udao;
-	
+
 	private RecetteRegimeDAO rrd;
-	
+
 	private TypeQuantiteDAO tqdao;
 
 	@Override
@@ -77,7 +78,7 @@ public class RecetteFormController implements Initializable, Observateur {
 		ingredients = idao.getIngredientsNames();
 		ObservableList<String> ingredientsChoices = FXCollections.observableArrayList(ingredients);
 		form_ingredient.setItems(ingredientsChoices);
-		
+
 		// Récupération des types de quantité
 		//getNames
 		tqdao = new TypeQuantiteDAO();
@@ -98,24 +99,32 @@ public class RecetteFormController implements Initializable, Observateur {
 	}
 
 	private void saveRecette() {
+
+		// Création de la liste des catégories
+		ObservableList<Node> box = categorieBox.getChildren(); // List
+		String tags = "";
+		for(Node i : box)  {
+			String tmp = ((TextField) ((HBox) i).getChildren().get(1)).getText(); 
+			tags = tags + tmp + ";";
+		}
+
 		// Enregistrement de la nouvelle recette
 		RecetteDAO rdao = new RecetteDAO();
 		String nom = form_nom.getText();
 		String duree = form_duree.getText();
 		String diff = form_diff.getValue();
 		String prix = form_prix.getText();
-		Recette r = new Recette(nom, "",  Integer.parseInt(duree), diff, prix, null, null, null, null);
+		Recette r = new Recette(nom, "",  Integer.parseInt(duree), diff, prix, tags, null, null, null, null);
 		rdao.create(r);
-		
+
 		// Récupération de l'id de la nouvelle recette
 		int id_recette = rdao.getLastId();
-		
-				
+
 		// Enregistrement des étapes
-		ObservableList<Node> box = etapesBox.getChildren(); // List
+		box = etapesBox.getChildren(); // List
 		EtapeDAO edao = new EtapeDAO();
 		int numEtape = 1;
-		
+
 		for(Node i : box)  {
 			String textEtape = ((TextArea) ((HBox) i).getChildren().get(1)).getText(); 
 			Etape e = new Etape(id_recette, numEtape, textEtape);
@@ -154,11 +163,8 @@ public class RecetteFormController implements Initializable, Observateur {
 			RecetteRegime rr = new RecetteRegime(id_recette, tmp);
 			rrd.create(rr);
 		}
-		
-		// TODO Enregistrement des catégories
-		
-		// TODO Affichage d'un message de succès
-		// Ou affichage d'un message d'erreur
+
+		// On redirige vers la page d'accueil
 		redirect();
 	}
 
@@ -168,10 +174,10 @@ public class RecetteFormController implements Initializable, Observateur {
 			HBox form = FXMLLoader.load(getClass().getResource("./../scenes/FormIngredient.fxml"));
 			ObservableList<String> ingredientsChoices = FXCollections.observableArrayList(ingredients);
 			((ChoiceBox) form.getChildren().get(1)).setItems(ingredientsChoices);
-			
+
 			ObservableList<String> typeQteChoices = FXCollections.observableArrayList("ml", "g");
 			((ChoiceBox) form.getChildren().get(5)).setItems(typeQteChoices);
-			
+
 
 			ingredientsBox.getChildren().add((Node) form);
 		} catch (IOException e2) {
@@ -216,7 +222,7 @@ public class RecetteFormController implements Initializable, Observateur {
 			e2.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	public void ajouterLigneCategorie(ActionEvent event) {
 		try {
@@ -236,7 +242,7 @@ public class RecetteFormController implements Initializable, Observateur {
 	public void enregistrerRecette(ActionEvent event) {
 		saveRecette();
 	}
-	
+
 	private void redirect() {
 		try {
 			model.switchScene(CreationScenes.creerMainScene(model));

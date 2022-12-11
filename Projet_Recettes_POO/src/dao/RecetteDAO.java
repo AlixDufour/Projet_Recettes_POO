@@ -99,7 +99,7 @@ public class RecetteDAO implements Dao<Recette>{
 
 	@Override
 	public void create(Recette t) {
-		String sql = "INSERT INTO Recette(nom,description,duree,difficulte,prix) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO Recette(nom,description,duree,difficulte,prix,tags) VALUES(?,?,?,?,?,?)";
 		
 		this.connect();
 		
@@ -110,6 +110,7 @@ public class RecetteDAO implements Dao<Recette>{
 			pstmt.setInt(3, t.getDuree());
 			pstmt.setString(4, t.getDifficulte());
 			pstmt.setString(5, t.getPrix());
+			pstmt.setString(6, t.getUnformatedTags());
 			
 			pstmt.executeUpdate();
 			
