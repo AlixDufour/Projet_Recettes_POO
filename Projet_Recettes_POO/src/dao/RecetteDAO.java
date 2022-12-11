@@ -132,6 +132,30 @@ public class RecetteDAO implements Dao<Recette>{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public int getLastId() {
+		String sql = "SELECT max(id) FROM Recette";
+		
+		this.connect();
+		
+		int lastId = 0;
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				lastId = rs.getInt(1);
+			}
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		this.closeConnection();
+		return lastId;
+	}
 
 	
 }
