@@ -24,11 +24,20 @@
          <content>
             <VBox prefHeight="764.0" prefWidth="603.0">
                <children>
-                  <Label fx:id="titreRecette" alignment="CENTER" prefHeight="41.0" prefWidth="585.0" text="Nom de la recette">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
+                  <HBox>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#retourAccueil" text="&lt;">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Label fx:id="titreRecette" alignment="CENTER" prefHeight="42.0" prefWidth="506.0" text="Nom de la recette">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                   <HBox prefHeight="211.0" prefWidth="573.0" spacing="20.0">
                      <children>
                         <ImageView fitHeight="229.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
