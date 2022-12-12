@@ -34,7 +34,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
                      <children>
                         <TextField fx:id="champRecherche" maxWidth="-Infinity" prefHeight="26.0" prefWidth="281.0" promptText="Recherche" />
                         <Button mnemonicParsing="false" onAction="#rechercher" text="Rechercher" />
@@ -58,34 +58,34 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="58.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgEntree" fitHeight="58.0" fitWidth="74.0" onMouseClicked="#entreeClicked" onMouseEntered="#entreeHover" onMouseExited="#entreeUnHover" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
+                              <Image url="@../img/logoEntree.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="58.0" fitWidth="74.0" layoutX="16.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                        <ImageView fx:id="imgPlat" fitHeight="58.0" fitWidth="74.0" layoutX="16.0" layoutY="4.0" onMouseClicked="#platClicked" onMouseEntered="#platHover" onMouseExited="#platUnHover" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
+                              <Image url="@../img/plat.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="58.0" fitWidth="74.0" layoutX="16.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                        <ImageView fx:id="imgDessert" fitHeight="58.0" fitWidth="74.0" layoutX="16.0" layoutY="4.0" onMouseClicked="#desserClicked" onMouseEntered="#dessertHover" onMouseExited="#desserUntHover" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                            <image>
-                              <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
+                              <Image url="@../img/dessert.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="58.0" fitWidth="74.0" layoutX="16.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                        <ImageView fx:id="imgPoisson" fitHeight="58.0" fitWidth="74.0" layoutX="16.0" layoutY="4.0" onMouseClicked="#poissonClicked" onMouseEntered="#poissonHover" onMouseExited="#poissonUnHover" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                            <image>
-                              <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
+                              <Image url="@../img/poisson.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="58.0" fitWidth="74.0" layoutX="16.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                        <ImageView fx:id="imgViande" fitHeight="58.0" fitWidth="74.0" layoutX="16.0" layoutY="4.0" onMouseClicked="#viandeClicked" onMouseEntered="#viandeHover" onMouseExited="#viandeUnHover" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
                            <image>
-                              <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
+                              <Image url="@../img/viande.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="58.0" fitWidth="74.0" layoutX="364.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+                        <ImageView fx:id="imgLegumes" fitHeight="58.0" fitWidth="74.0" layoutX="364.0" layoutY="4.0" onMouseClicked="#legumesClicked" onMouseEntered="#legumesHover" onMouseExited="#legumesUnHover" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
                            <image>
-                              <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
+                              <Image url="@../img/legumes.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -104,7 +104,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </ImageView>
-                  <GridPane fx:id="listeRecettes" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <GridPane fx:id="listeRecettes" prefWidth="190.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets top="15.0" />
                      </GridPane.margin>
