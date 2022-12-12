@@ -15,4 +15,6 @@ public class Commentaire {
 	public int getProfileId() {return this.profileId;}
 	public int getRecetteId() {return this.recetteId;}
 	public String getCommentaire() {return this.commentaire;}
+	
+	public void setCommentaire(String comm) {this.commentaire = comm;}
 }

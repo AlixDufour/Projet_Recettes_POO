@@ -45,7 +45,7 @@
                                  </children>
                               </HBox>
                               <Label text="Commentaire" />
-                              <TextArea prefHeight="111.0" prefWidth="242.0" />
+                              <TextArea fx:id="commField" onKeyTyped="#changeCommentaire" prefHeight="111.0" prefWidth="242.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" />

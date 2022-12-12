@@ -80,7 +80,7 @@ public class RecetteDAO implements Dao<Recette>{
 				}
 				
 				
-				recettes.add(new Recette(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6),rs.getString(7),
+				recettes.add(new Recette(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),rs.getString(6),rs.getString(7),
 						etapeDAO.getAll(rs.getInt(1)),ustensiles, qiDao.getAll(rs.getInt(1)), regimes));
 
 			}

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Recette {
 
+	int id;
 	String nom;
 	String description;
 	int duree;
@@ -19,6 +20,21 @@ public class Recette {
 	List<Ustensile> ustensiles;
 	List<QuantiteIngredient> ingredients;
 	List<Regime> regimes;
+	
+	public Recette(int id, String nom, String desc, int duree, String diff, String prix, String tags, List <Etape>etapes, List<Ustensile> ustensiles, 
+			List<QuantiteIngredient> ingr, List<Regime> regimes) {
+		this.id = id;
+		this.nom = nom;
+		this.description = desc;
+		this.duree = duree;
+		this.difficulte = diff;
+		this.prix = prix;
+		this.tags = tags;
+		this.etapes = etapes;
+		this.ustensiles = ustensiles;
+		this.ingredients = ingr;
+		this.regimes = regimes;
+	}
 	
 	public Recette(String nom, String desc, int duree, String diff, String prix, String tags, List <Etape>etapes, List<Ustensile> ustensiles, 
 			List<QuantiteIngredient> ingr, List<Regime> regimes) {
@@ -63,6 +79,7 @@ public class Recette {
 		return s;
 	}
 	
+	public int getId() {return this.id;}
 	public String getName() {return this.nom;}
 	public String getDesc() {return this.description;}
 	public int getDuree() {return this.duree;}

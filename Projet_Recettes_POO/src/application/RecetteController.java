@@ -3,12 +3,15 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dao.CommentaireDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -16,6 +19,7 @@ import javafx.scene.text.Font;
 public class RecetteController implements Initializable, Observateur {
 
 	private Modele model;
+	private Recette r;
 
 	@FXML
 	Label titreRecette, duree, niveau, prix, quantite;
@@ -27,11 +31,13 @@ public class RecetteController implements Initializable, Observateur {
 	@FXML
 	TabPane testTab;
 	
+	@FXML
+	TextArea commField;
 	
 	@Override
 	public void reagir() {
 
-		Recette r = model.getSelectedRecette();
+		r = model.getSelectedRecette();
 		
 		titreRecette.setText(r.getName());
 		duree.setText(r.getDuree() + " min");
@@ -84,6 +90,12 @@ public class RecetteController implements Initializable, Observateur {
 			etapeBox.getChildren().add(h);
 		}
 		
+		// Affichage commentaire
+		CommentaireDAO cDao = new CommentaireDAO();
+		Commentaire comm = cDao.getCommentaireByIDs(this.model.getActiveProfile().getId(), r.getId());
+		if(comm != null) {
+			commField.setText(comm.getCommentaire());
+		}
 
 	}
 
@@ -96,4 +108,21 @@ public class RecetteController implements Initializable, Observateur {
 		this.model = m;
 		model.ajouterObservateur(this);
 	}
+	
+	public void changeCommentaire() {
+		
+		CommentaireDAO cDao = new CommentaireDAO();
+		Commentaire comm = cDao.getCommentaireByIDs(this.model.getActiveProfile().getId(), r.getId());
+		
+		if(comm != null) {
+			comm.setCommentaire(commField.getText());
+			cDao.update(comm, null);
+		}else {
+			Commentaire newComm = new Commentaire(this.model.getActiveProfile().getId(), r.getId(), commField.getText());
+			cDao.create(newComm);
+		}
+		
+	}
+	
+	
 }
