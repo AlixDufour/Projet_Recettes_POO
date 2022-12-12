@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -95,5 +96,14 @@ public class RecetteController implements Initializable, Observateur {
 	public void setModele(Modele m) {
 		this.model = m;
 		model.ajouterObservateur(this);
+	}
+	
+	@FXML
+	public void retourAccueil() {
+		try {
+			model.switchScene(CreationScenes.creerChoixProfileScene(model));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 }
