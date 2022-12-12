@@ -130,7 +130,7 @@ List<Profile> profiles = new ArrayList<Profile>();
 		//Maj des infos générales
 		try {
 			PreparedStatement pstmt = this.conn.prepareStatement(sql);
-			pstmt.setString(1, t.getNom());
+			pstmt.setString(1, t.getPrenom());
 			pstmt.setString(2, t.getNom());
 			pstmt.setInt(3, t.getRegime().getId());
 			pstmt.setInt(4, t.getId());
