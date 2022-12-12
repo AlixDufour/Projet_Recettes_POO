@@ -17,170 +17,163 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProfileController">
    <children>
-      <TabPane layoutX="20.0" layoutY="46.0" prefHeight="400.0" prefWidth="600.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <tabs>
-          <Tab style="-fx-rotate: 90; -fx-pref-height: 100;" text="Profil">
-               <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
-               </content>
-               <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <HBox prefHeight="49.0" prefWidth="500.0">
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TabPane prefHeight="358.0" prefWidth="372.0" side="LEFT" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab style="-fx-rotate: 90; -fx-pref-height: 100;" text="Profil">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                     </content>
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label prefHeight="27.0" prefWidth="82.0" text="Nom du profil">
-                                 <HBox.margin>
-                                    <Insets right="50.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <TextField fx:id="editName" text="patate" />
+                              <HBox prefHeight="69.0" prefWidth="470.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="82.0" text="Nom du profil">
+                                       <HBox.margin>
+                                          <Insets right="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="editName" onAction="#changeProfileName" text="patate" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="79.0" prefWidth="470.0">
+                                 <children>
+                                    <Label prefHeight="27.0" prefWidth="110.0" text="Régime spécifique">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <ChoiceBox fx:id="regimeSelect" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="154.0" prefWidth="470.0">
+                                 <children>
+                                    <Label prefHeight="30.0" prefWidth="90.0" text="Image du profil">
+                                       <HBox.margin>
+                                          <Insets right="30.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <ImageView fitHeight="157.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="65.0" prefWidth="470.0">
+                                 <children>
+                                    <Label prefHeight="34.0" prefWidth="118.0" text="Supprimer le profil">
+                                       <HBox.margin>
+                                          <Insets right="30.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Button fx:id="bSupprimerProfil" mnemonicParsing="false" onAction="#clickSupprimerProfil" text="Supprimer" textAlignment="CENTER" />
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
-                        <HBox prefHeight="62.0" prefWidth="470.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="110.0" text="Régime spécifique">
-                                 <HBox.margin>
-                                    <Insets right="20.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <ChoiceBox fx:id="regimeSelect" prefWidth="150.0" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="154.0" prefWidth="470.0">
-                           <children>
-                              <Label prefHeight="30.0" prefWidth="90.0" text="Image du profil">
-                                 <HBox.margin>
-                                    <Insets right="30.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="30.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </Tab>
+                  <Tab style="-fx-rotate: 90; -fx-pref-height: 100;" text="Goûts">
+                     <content>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label prefHeight="34.0" prefWidth="118.0" text="Supprimer le profil">
-                                 <HBox.margin>
-                                    <Insets right="30.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Button mnemonicParsing="false" text="Supprimer" textAlignment="CENTER" />
+                              <VBox prefHeight="400.0" prefWidth="241.0">
+                                 <children>
+                                    <TextField alignment="CENTER" promptText="Rechercher un ingrédient">
+                                       <VBox.margin>
+                                          <Insets bottom="15.0" top="15.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <ScrollPane hbarPolicy="NEVER">
+                                       <content>
+                                          <VBox fx:id="allIngredients" prefHeight="378.0" prefWidth="233.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="234.0" text="Résultat 1" />
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                              <ScrollPane hbarPolicy="NEVER">
+                                 <content>
+                                    <VBox fx:id="listeIngredients" prefHeight="400.0" prefWidth="274.0">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="268.0" text="Ingrédients que je n'apprécie pas">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="15.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="30.0" />
-                     </padding>
-                  </VBox>
-               </content>
-            </Tab>
-            <Tab style="-fx-rotate: 90; -fx-pref-height: 100;" text="Goûts">
-               <content>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <VBox prefHeight="400.0" prefWidth="241.0">
+                     </content>
+                  </Tab>
+                <Tab style="-fx-rotate: 90; -fx-pref-height: 100;" text="Ustensiles">
+                     <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                     </content>
+                     <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <TextField alignment="CENTER" promptText="Rechercher un ingrédient">
-                                 <VBox.margin>
-                                    <Insets bottom="15.0" top="15.0" />
-                                 </VBox.margin>
-                              </TextField>
+                              <VBox prefHeight="400.0" prefWidth="241.0">
+                                 <children>
+                                    <TextField alignment="CENTER" promptText="Rechercher un ustensile">
+                                       <VBox.margin>
+                                          <Insets bottom="15.0" top="15.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <ScrollPane hbarPolicy="NEVER">
+                                       <content>
+                                          <VBox fx:id="allUstensiles" prefHeight="378.0" prefWidth="233.0" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
                               <ScrollPane hbarPolicy="NEVER">
                                  <content>
-                                    <VBox prefHeight="378.0" prefWidth="233.0">
+                                    <VBox fx:id="listeUstensiles" prefHeight="400.0" prefWidth="274.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="234.0" text="Résultat 1" />
+                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="268.0" text="Ustensiles que je possède">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="15.0" />
+                                             </VBox.margin>
+                                          </Label>
                                        </children>
                                     </VBox>
                                  </content>
                               </ScrollPane>
                            </children>
-                        </VBox>
-                        <ScrollPane hbarPolicy="NEVER">
-                           <content>
-                              <VBox fx:id="listeIngredients" prefHeight="400.0" prefWidth="274.0">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="268.0" text="Ingrédients que je n'apprécie pas">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </HBox>
-               </content>
-            </Tab>
-          <Tab style="-fx-rotate: 90; -fx-pref-height: 100;" text="Ustensiles">
-               <content>
-                  <HBox prefHeight="100.0" prefWidth="200.0" />
-               </content>
-               <content>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <VBox prefHeight="400.0" prefWidth="241.0">
-                           <children>
-                              <TextField alignment="CENTER" promptText="Rechercher un ustensile">
-                                 <VBox.margin>
-                                    <Insets bottom="15.0" top="15.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <ScrollPane hbarPolicy="NEVER">
-                                 <content>
-                                    <VBox prefHeight="378.0" prefWidth="233.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="234.0" text="Résultat 1" />
-                                       </children>
-                                    </VBox>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </VBox>
-                        <ScrollPane hbarPolicy="NEVER">
-                           <content>
-                              <VBox prefHeight="400.0" prefWidth="274.0">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="268.0" text="Ustensiles que je possède">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="268.0" text="Ustensile 1">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="270.0" text="Ustensile 2">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </HBox>
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
+                        </HBox>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="bRetour" mnemonicParsing="false" onAction="#clickRetour" text="Enregistrer">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

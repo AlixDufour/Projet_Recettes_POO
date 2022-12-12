@@ -99,7 +99,7 @@ public class RecetteDAO implements Dao<Recette>{
 
 	@Override
 	public void create(Recette t) {
-		String sql = "INSERT INTO Recette(nom,description,duree,difficulte,prix) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO Recette(nom,description,duree,difficulte,prix,tags) VALUES(?,?,?,?,?,?)";
 		
 		this.connect();
 		
@@ -110,6 +110,7 @@ public class RecetteDAO implements Dao<Recette>{
 			pstmt.setInt(3, t.getDuree());
 			pstmt.setString(4, t.getDifficulte());
 			pstmt.setString(5, t.getPrix());
+			pstmt.setString(6, t.getUnformatedTags());
 			
 			pstmt.executeUpdate();
 			
@@ -131,6 +132,30 @@ public class RecetteDAO implements Dao<Recette>{
 	public void delete(Recette t) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int getLastId() {
+		String sql = "SELECT max(id) FROM Recette";
+		
+		this.connect();
+		
+		int lastId = 0;
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				lastId = rs.getInt(1);
+			}
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		this.closeConnection();
+		return lastId;
 	}
 
 	

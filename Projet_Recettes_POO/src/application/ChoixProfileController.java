@@ -19,7 +19,6 @@ public class ChoixProfileController implements Observateur, Initializable{
 	@FXML
 	private FlowPane listeProfils;
 
-	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		listeProfils.getChildren().clear();
 		listeProfils.setHgap(12);

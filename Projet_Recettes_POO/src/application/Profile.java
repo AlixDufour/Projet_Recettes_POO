@@ -30,7 +30,13 @@ public class Profile {
 		this.ustensiles = new ArrayList<Ustensile>();
 	}
 
+<<<<<<< HEAD
 	public int getId() {return this.id;}
+=======
+	public void setPrenom(String s) {
+		prenom = s;
+	}
+>>>>>>> branch 'controller' of git@github.com:AlixDufour/Projet_Recettes_POO.git
 	public String getPrenom() {return this.prenom;}
 	public String getNom() {return this.nom;}
 	public Regime getRegime() {return this.regime;}
@@ -39,10 +45,61 @@ public class Profile {
 		return this.gouts;
 	}
 	
+<<<<<<< HEAD
 	public List<Ustensile> getUstensile() {
 		return this.ustensiles;
 	}
 	
+=======
+	// retourne true si bien retirer, false si il n'était pas dans la liste
+	public Boolean removeIngredient(Ingredient ingredient) {
+		for (Ingredient i : gouts) {
+			if (i.isSameAs(ingredient)) {
+				gouts.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// retourne true si bien ajouté, false si il était déjà dans la liste
+	public Boolean addIngredient(Ingredient ingredient) {
+		for (Ingredient i : gouts) {
+			if (i.isSameAs(ingredient)) {
+				return false;
+			}
+		}
+		gouts.add(ingredient);
+		return true;
+	}
+
+	// retourne true si bien retirer, false si il n'était pas dans la liste
+	public Boolean removeUstensile(Ustensile ustensile) {
+		for (Ustensile u : ustensiles) {
+			if (u.isSameAs(ustensile)) {
+				ustensiles.remove(u);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// retourne true si bien ajouté, false si il était déjà dans la liste
+	public Boolean addUstensile(Ustensile ustensile) {
+		for (Ustensile u : ustensiles) {
+			if (u.isSameAs(ustensile)) {
+				return false;
+			}
+		}
+		ustensiles.add(ustensile);
+		return true;
+	}
+
+	public List<Ustensile> getUstensiles() {
+		return this.ustensiles;
+	}
+
+>>>>>>> branch 'controller' of git@github.com:AlixDufour/Projet_Recettes_POO.git
 	public String toString() {
 		String s = "Prénom : " + this.prenom + "\n";
 		s += "Nom : " + this.nom + "\n";

@@ -15,4 +15,12 @@ public class Ustensile {
 	public String getNom() {return this.nom;}
 	
 	public String toString() {return "Nom : " + this.nom + "\n";}
+
+	public Boolean isSameAs(Ustensile u) {
+		return this.id == u.getId();
+	}
+
+	public Boolean nameEquals(String s) {
+		return nom.equals(s);
+	}
 }
