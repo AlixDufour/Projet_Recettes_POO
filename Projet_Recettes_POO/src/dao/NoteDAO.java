@@ -125,7 +125,29 @@ public class NoteDAO implements Dao<Note> {
 
 	@Override
 	public void update(Note t, String[] params) {
-		// TODO Auto-generated method stub
+		
+
+		this.connect();
+		
+		String sql = "UPDATE profileNote SET note = ? "
+
+                + "WHERE profileId = ? AND recetteId = ? ";
+		
+		//Maj des infos générales
+		try {
+			PreparedStatement pstmt = this.conn.prepareStatement(sql);
+
+			pstmt.setInt(1, t.getNote());
+			pstmt.setInt(2, t.getProfileId());
+			pstmt.setInt(3, t.getRecetteId());
+			
+			pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	
+		this.closeConnection();
 		
 	}
 
