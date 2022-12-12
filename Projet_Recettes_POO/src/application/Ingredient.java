@@ -14,4 +14,12 @@ public class Ingredient {
 	public String toString() {
 		return "Nom : " + this.nom + "\n";
 	}
+
+	public Boolean isSameAs(Ingredient i) {
+		return this.id == i.getId();
+	}
+
+	public Boolean nameEquals(String s) {
+		return nom.equals(s);
+	}
 }
