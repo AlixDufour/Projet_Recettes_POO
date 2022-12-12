@@ -85,10 +85,20 @@ public class MainController implements Observateur, Initializable {
 		int y = 1;
 		for (Recette r : this.model.getRecetteFiltrees()) {
 			VBox vbox = new VBox();
-			Label label = new Label(r.getName());
+			Button b = new Button(r.getName());
+			b.setOnAction(e -> {
+				try {
+					this.model.switchScene(CreationScenes.creerRecetteScene(model));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				this.model.setSelectedRecette(r);
+				
+			});
 			
 			// Mise en forme de la vbox
-			vbox.getChildren().add(label);
+			vbox.getChildren().add(b);
 			vbox.setPadding(new Insets(30, 30, 30, 30));
 			vbox.setAlignment(Pos.CENTER); 
 			

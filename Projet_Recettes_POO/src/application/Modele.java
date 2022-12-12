@@ -15,6 +15,7 @@ public class Modele {
 	private Profile activeProfile;
 	private ArrayList<Recette> recettes;
 	private ArrayList<Recette> recettesFiltrees;
+	private Recette selectedRecette = null;
 	
 	public Modele(Stage stage) {
 		this.stage = stage;
@@ -138,4 +139,8 @@ public class Modele {
 	public ArrayList<Recette> getRecetteFiltrees(){
 		return this.recettesFiltrees;
 	}
+	
+	public Recette getSelectedRecette() {return this.selectedRecette;}
+	public void setSelectedRecette(Recette r) {this.selectedRecette = r; this.notifierObservateur();}
+	
 }

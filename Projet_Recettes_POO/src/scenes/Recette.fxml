@@ -24,7 +24,7 @@
          <content>
             <VBox prefHeight="764.0" prefWidth="603.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="585.0" text="Nom de la recette">
+                  <Label fx:id="titreRecette" alignment="CENTER" prefHeight="41.0" prefWidth="585.0" text="Nom de la recette">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -62,14 +62,14 @@
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                            <children>
-                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="233.0" text="35mn" HBox.hgrow="ALWAYS" />
-                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Facile" HBox.hgrow="ALWAYS" />
-                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="230.0" text="15€" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="duree" alignment="CENTER" prefHeight="18.0" prefWidth="233.0" text="35mn" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="niveau" alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Facile" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="prix" alignment="CENTER" prefHeight="18.0" prefWidth="230.0" text="15€" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                      </children>
                   </GridPane>
-                  <TabPane prefHeight="187.0" prefWidth="488.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane fx:id="testTab" prefHeight="294.0" prefWidth="603.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Ingrédients">
                            <content>
@@ -88,30 +88,41 @@
                                              </font>
                                           </Label>
                                           <Button mnemonicParsing="false" text="-" />
-                                          <TextField alignment="CENTER" prefHeight="26.0" prefWidth="30.0" text="2" />
+                                          <Label fx:id="quantite" text="2" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </Label>
                                           <Button mnemonicParsing="false" text="+" />
                                        </children>
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
                                     </HBox>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
+                                    <VBox fx:id="ingredientBox">
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="142.0" text="Ingrédient 1">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="2">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                             <children>
+                                                <Label prefHeight="20.0" prefWidth="142.0" text="Ingrédient 1">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="2">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
                                        </children>
-                                    </HBox>
+                                    </VBox>
                                  </children>
                               </VBox>
                            </content>
@@ -132,25 +143,29 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
                                     </HBox>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
+                                    <VBox fx:id="ustensileBox">
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="142.0" text="Ustensile 1">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                             <children>
+                                                <Label prefHeight="20.0" prefWidth="142.0" text="Ustensile 1">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
                                        </children>
-                                    </HBox>
+                                    </VBox>
                                  </children>
                               </VBox>
                            </content>
                         </Tab>
                         <Tab text="Etapes">
                            <content>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="test" prefHeight="200.0" prefWidth="100.0">
                                  <children>
                                     <HBox prefHeight="34.0" prefWidth="573.0">
                                        <children>
@@ -164,23 +179,27 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
                                     </HBox>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
+                                    <VBox fx:id="etapeBox">
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="142.0" text="Etape 1">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="64.0" prefWidth="418.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                             <children>
+                                                <Label prefHeight="20.0" prefWidth="142.0" text="Etape 1">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="64.0" prefWidth="418.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
                                        </children>
-                                    </HBox>
+                                    </VBox>
                                  </children>
                               </VBox>
                            </content></Tab>
