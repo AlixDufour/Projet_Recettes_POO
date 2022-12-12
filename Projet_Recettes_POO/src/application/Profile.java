@@ -30,13 +30,13 @@ public class Profile {
 		this.ustensiles = new ArrayList<Ustensile>();
 	}
 
-<<<<<<< HEAD
+
 	public int getId() {return this.id;}
-=======
+
 	public void setPrenom(String s) {
 		prenom = s;
 	}
->>>>>>> branch 'controller' of git@github.com:AlixDufour/Projet_Recettes_POO.git
+
 	public String getPrenom() {return this.prenom;}
 	public String getNom() {return this.nom;}
 	public Regime getRegime() {return this.regime;}
@@ -45,12 +45,10 @@ public class Profile {
 		return this.gouts;
 	}
 	
-<<<<<<< HEAD
 	public List<Ustensile> getUstensile() {
 		return this.ustensiles;
 	}
 	
-=======
 	// retourne true si bien retirer, false si il n'était pas dans la liste
 	public Boolean removeIngredient(Ingredient ingredient) {
 		for (Ingredient i : gouts) {
@@ -99,7 +97,6 @@ public class Profile {
 		return this.ustensiles;
 	}
 
->>>>>>> branch 'controller' of git@github.com:AlixDufour/Projet_Recettes_POO.git
 	public String toString() {
 		String s = "Prénom : " + this.prenom + "\n";
 		s += "Nom : " + this.nom + "\n";
