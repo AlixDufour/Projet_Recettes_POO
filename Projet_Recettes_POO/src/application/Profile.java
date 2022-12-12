@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Profile {
 	
+	int id;
 	String prenom;
 	String nom;
 	Regime regime;
@@ -12,7 +13,8 @@ public class Profile {
 	List<Ustensile> ustensiles;
 	
 	
-	public Profile(String prenom, String nom, Regime regime, List<Ingredient> gouts, List<Ustensile> ustensiles) {
+	public Profile(int id, String prenom, String nom, Regime regime, List<Ingredient> gouts, List<Ustensile> ustensiles) {
+		this.id = id;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.regime = regime;
@@ -28,12 +30,17 @@ public class Profile {
 		this.ustensiles = new ArrayList<Ustensile>();
 	}
 
+	public int getId() {return this.id;}
 	public String getPrenom() {return this.prenom;}
 	public String getNom() {return this.nom;}
 	public Regime getRegime() {return this.regime;}
 
 	public List<Ingredient> getGouts() {
 		return this.gouts;
+	}
+	
+	public List<Ustensile> getUstensile() {
+		return this.ustensiles;
 	}
 	
 	public String toString() {

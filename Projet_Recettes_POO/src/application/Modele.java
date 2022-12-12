@@ -25,6 +25,12 @@ public class Modele {
 		activeProfile = null;
 	}
 
+	// Met a joru la liste recette avec les recttes de la bdd
+	public void rechargerRecettes() {
+		RecetteDAO rDao = new RecetteDAO();
+		recettes = (ArrayList<Recette>) rDao.getAll();
+	}
+	
 	public void ajouterObservateur(Observateur o) {
 		obs.add(o);
 	}

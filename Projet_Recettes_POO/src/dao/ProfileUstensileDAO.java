@@ -110,7 +110,7 @@ private Connection conn;
 
 	@Override
 	public void delete(ProfileUstensile t) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

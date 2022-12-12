@@ -1,4 +1,6 @@
 package application;
+import java.util.ArrayList;
+
 import dao.IngredientDAO;
 import dao.NoteDAO;
 import dao.ProfileDAO;
@@ -17,6 +19,7 @@ public class Main extends Application {
 
 		Modele model = new Modele(primaryStage);
 		
+
 		try {
 			
 			model.switchScene(CreationScenes.creerChoixProfileScene(model));

@@ -76,7 +76,7 @@ List<Profile> profiles = new ArrayList<Profile>();
 					ustensiles.add(u.getUstensile());
 				}
 				
-				profiles.add(new Profile(rs.getString(2), rs.getString(3), new Regime(rs.getInt(4), rs.getString(5)), gouts, ustensiles));
+				profiles.add(new Profile(rs.getInt(1),rs.getString(2), rs.getString(3), new Regime(rs.getInt(4), rs.getString(5)), gouts, ustensiles));
 			}
 			
 			
@@ -119,13 +119,82 @@ List<Profile> profiles = new ArrayList<Profile>();
 
 	@Override
 	public void update(Profile t, String[] params) {
-		// TODO Auto-generated method stub
 		
+		this.connect();
+		
+		String sql = "UPDATE Profile SET prenom = ? , "
+                + "nom = ?, "
+                + "regimeId = ? "
+                + "WHERE id = ?";
+		
+		//Maj des infos générales
+		try {
+			PreparedStatement pstmt = this.conn.prepareStatement(sql);
+			pstmt.setString(1, t.getNom());
+			pstmt.setString(2, t.getNom());
+			pstmt.setInt(3, t.getRegime().getId());
+			pstmt.setInt(4, t.getId());
+			
+			pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		// Maj des ustensiles
+		
+		sql = "DELETE FROM profileUstensile WHERE profileId = ?";
+		
+		try {
+			PreparedStatement pstmt = this.conn.prepareStatement(sql);
+			pstmt.setInt(1, t.getId());
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		ProfileUstensileDAO puDao = new ProfileUstensileDAO();
+		for(Ustensile u : t.getUstensile()) {
+			puDao.create(new ProfileUstensile(t.getId(), u));
+		}
+		
+		
+		// Maj des gouts
+		
+		sql = "DELETE FROM profileGouts WHERE profileId = ?";
+				
+		try {
+				PreparedStatement pstmt = this.conn.prepareStatement(sql);
+				pstmt.setInt(1, t.getId());
+				pstmt.executeUpdate();
+		}catch(SQLException e) {
+				e.printStackTrace();
+		}
+				
+		ProfileGoutsDAO pgDao = new ProfileGoutsDAO();
+		for(Ingredient i : t.getGouts()) {
+			pgDao.create(new Gout(t.getId(), i));
+		}
+		
+		this.closeConnection();
 	}
 
 	@Override
 	public void delete(Profile t) {
-		// TODO Auto-generated method stub
+		this.connect();
+		
+		String sql = "DELETE FROM Profile WHERE id = ?";
+		
+		try {
+				PreparedStatement pstmt = this.conn.prepareStatement(sql);
+				pstmt.setInt(1, t.getId());
+				pstmt.executeUpdate();
+		}catch(SQLException e) {
+				e.printStackTrace();
+		}
+				
+		
+		this.closeConnection();
 		
 	}
 
