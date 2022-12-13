@@ -21,7 +21,7 @@ public class ProfileController implements Initializable, Observateur {
 	private Modele model;
 	
 	@FXML
-	private TextField editName;
+	private TextField editName, champIngredient, champUstensile;
 
 	@FXML
 	private Button bRetour;
@@ -43,8 +43,7 @@ public class ProfileController implements Initializable, Observateur {
 
 	@Override
 	public void reagir() {
-		// TODO Auto-generated method stub
-
+		//this.updateProfileInfos();
 	}
 
 	@Override
@@ -58,8 +57,11 @@ public class ProfileController implements Initializable, Observateur {
 	}
 	
 	public void updateAllUstensiles() {
-		UstensileDAO ustensileDAO = new UstensileDAO();
-		List<Ustensile> allUstensilesListe = ustensileDAO.getAll();
+		//UstensileDAO ustensileDAO = new UstensileDAO();
+		//List<Ustensile> allUstensilesListe = ustensileDAO.getAll();
+		this.allUstensiles.getChildren().clear();
+		this.model.filtrerUstensiles(this.champUstensile.getText());
+		List<Ustensile> allUstensilesListe = this.model.getUstensileFiltrees();
 		for (Ustensile u : allUstensilesListe) {
 			Boolean isIn = false;
 			for (Ustensile uProfil : model.getActiveProfile().getUstensiles()) {
@@ -69,6 +71,7 @@ public class ProfileController implements Initializable, Observateur {
 			}
 			if (!isIn) {
 				Button l = new Button(u.getNom());
+				l.setMaxWidth(Double.MAX_VALUE);
 
 				ajoutBoutonAllUstensiles(l);
 			}
@@ -86,8 +89,11 @@ public class ProfileController implements Initializable, Observateur {
 	}
 
 	public void updateAllIngredients() {
-		IngredientDAO ingredientDAO = new IngredientDAO();
-		List<Ingredient> allIngredientsListe = ingredientDAO.getAll();
+		//IngredientDAO ingredientDAO = new IngredientDAO();
+		//List<Ingredient> allIngredientsListe = ingredientDAO.getAll();
+		this.allIngredients.getChildren().clear();
+		this.model.filtrerIngredient(this.champIngredient.getText());
+		List<Ingredient> allIngredientsListe = this.model.getIngredientFiltrees();
 		for (Ingredient u : allIngredientsListe) {
 			Boolean isIn = false;
 			for (Ingredient uProfil : model.getActiveProfile().getGouts()) {
@@ -97,6 +103,7 @@ public class ProfileController implements Initializable, Observateur {
 			}
 			if (!isIn) {
 				Button l = new Button(u.getNom());
+				l.setMaxWidth(Double.MAX_VALUE);
 
 				ajoutBoutonAllIngredients(l);
 			}
@@ -104,22 +111,24 @@ public class ProfileController implements Initializable, Observateur {
 	}
 
 	public void updateIngredients() {
+		this.listeIngredients.getChildren().clear();
 		if (model != null) {
 			ArrayList<Ingredient> gouts = (ArrayList<Ingredient>) model.getActiveProfile().getGouts();
 			for (Ingredient i : gouts) {
 				Button l = new Button(i.getNom());
-
+				l.setMaxWidth(Double.MAX_VALUE);
 				ajoutBoutonListeIngredients(l);
 			}
 		}
 	}
 
 	public void updateUstensiles() {
+		this.listeUstensiles.getChildren().clear();
 		if (model != null) {
 			ArrayList<Ustensile> materiels = (ArrayList<Ustensile>) model.getActiveProfile().getUstensiles();
 			for (Ustensile u : materiels) {
 				Button l = new Button(u.getNom());
-
+				l.setMaxWidth(Double.MAX_VALUE);
 				ajoutBoutonListeUstensiles(l);
 
 			}

@@ -85,18 +85,14 @@
                            <children>
                               <VBox prefHeight="400.0" prefWidth="241.0">
                                  <children>
-                                    <TextField alignment="CENTER" promptText="Rechercher un ingrédient">
+                                    <TextField fx:id="champIngredient" alignment="CENTER" onKeyTyped="#updateProfileInfos" promptText="Rechercher un ingrédient">
                                        <VBox.margin>
                                           <Insets bottom="15.0" top="15.0" />
                                        </VBox.margin>
                                     </TextField>
                                     <ScrollPane hbarPolicy="NEVER">
                                        <content>
-                                          <VBox fx:id="allIngredients" prefHeight="378.0" prefWidth="233.0">
-                                             <children>
-                                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="234.0" text="Résultat 1" />
-                                             </children>
-                                          </VBox>
+                                          <VBox fx:id="allIngredients" prefHeight="378.0" prefWidth="233.0" />
                                        </content>
                                     </ScrollPane>
                                  </children>
@@ -130,7 +126,7 @@
                            <children>
                               <VBox prefHeight="400.0" prefWidth="241.0">
                                  <children>
-                                    <TextField alignment="CENTER" promptText="Rechercher un ustensile">
+                                    <TextField fx:id="champUstensile" alignment="CENTER" onKeyTyped="#updateProfileInfos" promptText="Rechercher un ustensile">
                                        <VBox.margin>
                                           <Insets bottom="15.0" top="15.0" />
                                        </VBox.margin>

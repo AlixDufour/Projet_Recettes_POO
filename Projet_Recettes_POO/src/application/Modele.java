@@ -2,8 +2,11 @@ package application;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+import dao.IngredientDAO;
 import dao.RecetteDAO;
+import dao.UstensileDAO;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,14 +16,23 @@ public class Modele {
 
 	private Stage stage;
 	private Profile activeProfile;
-	private ArrayList<Recette> recettes;
-	private ArrayList<Recette> recettesFiltrees;
+	private List<Recette> recettes;
+	private List<Ustensile> ustensiles;
+	private List<Ustensile> ustensilesFiltres;
+	private List<Ingredient> ingredients;
+	private List<Ingredient> ingredientsFiltres;
+	private List<Recette> recettesFiltrees;
 	private Recette selectedRecette = null;
 	
 	public Modele(Stage stage) {
 		this.stage = stage;
 		RecetteDAO rDao = new RecetteDAO();
-		recettes = (ArrayList<Recette>) rDao.getAll();
+		UstensileDAO uDao = new UstensileDAO();
+		IngredientDAO iDao = new IngredientDAO();
+		
+		recettes =  rDao.getAll();
+		ingredients = iDao.getAll();
+		ustensiles = uDao.getAll();
 		
 		// Sera affecté lors du choix du profil, soit profil déjà existant, soit création d'un nouveau profil
 		activeProfile = null;
@@ -65,6 +77,25 @@ public class Modele {
 		this.notifierObservateur();
 	}
 	
+	public void filtrerIngredient(String champRecherche) {
+		this.ingredientsFiltres = new ArrayList<>(this.ingredients);
+		for(Ingredient i : this.ingredients) {
+			if(!i.getNom().toLowerCase().contains(champRecherche.toLowerCase())) {
+				this.ingredientsFiltres.remove(i);
+			}
+		}
+		this.notifierObservateur();
+	}
+	
+	public void filtrerUstensiles(String champRecherche) {
+		this.ustensilesFiltres = new ArrayList<>(this.ustensiles);
+		for(Ustensile i : this.ustensiles) {
+			if(!i.getNom().toLowerCase().contains(champRecherche.toLowerCase())) {
+				this.ustensilesFiltres.remove(i);
+			}
+		}
+		this.notifierObservateur();
+	}
 	
 	public void filtrerRecettes(String champRecherche,String categorie,boolean appliquerPreferences){
 		
@@ -136,8 +167,16 @@ public class Modele {
 		this.notifierObservateur();
 	}
 	
-	public ArrayList<Recette> getRecetteFiltrees(){
+	public List<Recette> getRecetteFiltrees(){
 		return this.recettesFiltrees;
+	}
+	
+	public List<Ustensile> getUstensileFiltrees(){
+		return this.ustensilesFiltres;
+	}
+	
+	public List<Ingredient> getIngredientFiltrees(){
+		return this.ingredientsFiltres;
 	}
 	
 	public Recette getSelectedRecette() {return this.selectedRecette;}
