@@ -16,10 +16,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-public class ProfileController implements Initializable, Observateur {
+public class ProfileController extends Controller{
 
-	private Modele model;
-	
 	@FXML
 	private TextField editName, champIngredient, champUstensile;
 
@@ -49,11 +47,6 @@ public class ProfileController implements Initializable, Observateur {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-	}
-
-	public void setModele(Modele m) {
-		this.model = m;
-		model.ajouterObservateur(this);
 	}
 	
 	public void updateAllUstensiles() {

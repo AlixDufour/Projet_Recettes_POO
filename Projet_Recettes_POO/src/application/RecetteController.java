@@ -20,9 +20,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class RecetteController implements Initializable, Observateur {
+public class RecetteController extends Controller {
 
-	private Modele model;
 	private Recette r;
 	private ColorAdjust jaune;
 	private ColorAdjust hoverJaune;
@@ -127,10 +126,6 @@ public class RecetteController implements Initializable, Observateur {
 		
 	}
 
-	public void setModele(Modele m) {
-		this.model = m;
-		model.ajouterObservateur(this);
-	}
 	
 	public void changeCommentaire() {
 		

@@ -21,9 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-public class MainController implements Observateur, Initializable {
+public class MainController extends Controller {
 
-	private Modele model;
 
 	@FXML
 	private GridPane listeRecettes;
@@ -118,8 +117,7 @@ public class MainController implements Observateur, Initializable {
 
 
 	public void setModele(Modele m) {
-		this.model = m;
-		model.ajouterObservateur(this);
+		super.setModele(m);
 		this.model.filtrerRecettes(champRecherche.getText(),categorie ,applyPreferencesBox.isSelected());
 	}
 

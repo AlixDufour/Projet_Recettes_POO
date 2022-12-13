@@ -10,9 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 
-public class ChoixProfileController implements Observateur, Initializable{
+public class ChoixProfileController extends Controller{
 
-	private Modele model;
 	private ProfileDAO profils;
 	private final int MAXprofils = 5;
 
@@ -68,10 +67,5 @@ public class ChoixProfileController implements Observateur, Initializable{
 
 	}
 
-
-	public void setModele(Modele m) {
-		this.model = m;
-		model.ajouterObservateur(this);
-	}
 
 }

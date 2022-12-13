@@ -29,9 +29,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
 
-public class RecetteFormController implements Initializable, Observateur {
+public class RecetteFormController extends Controller{
 
-	private Modele model;
 
 	@FXML
 	private TextField form_nom, form_duree, form_desc, form_prix;
@@ -94,10 +93,6 @@ public class RecetteFormController implements Initializable, Observateur {
 		form_ustensile.setItems(ustensilesChoices);
 	}
 
-	public void setModele(Modele m) {
-		this.model = m;
-		model.ajouterObservateur(this);
-	}
 
 	private void saveRecette() {
 
