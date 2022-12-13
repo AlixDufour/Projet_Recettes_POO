@@ -8,8 +8,6 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -46,20 +44,6 @@
                                        </HBox.margin>
                                     </Label>
                                     <ChoiceBox fx:id="regimeSelect" prefWidth="150.0" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="154.0" prefWidth="470.0">
-                                 <children>
-                                    <Label prefHeight="30.0" prefWidth="90.0" text="Image du profil">
-                                       <HBox.margin>
-                                          <Insets right="30.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <ImageView fitHeight="157.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
-                                       </image>
-                                    </ImageView>
                                  </children>
                               </HBox>
                               <HBox prefHeight="65.0" prefWidth="470.0">

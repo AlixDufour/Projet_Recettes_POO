@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 import dao.IngredientDAO;
 import dao.ProfileDAO;
 import dao.UstensileDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -47,11 +49,17 @@ public class ProfileController extends Controller{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
+		
+		
 	}
 	
 	public void updateAllUstensiles() {
 		//UstensileDAO ustensileDAO = new UstensileDAO();
 		//List<Ustensile> allUstensilesListe = ustensileDAO.getAll();
+		ObservableList<String> regimeChoices = FXCollections.observableArrayList("Classique", "Végétarien", "Vegan");
+		regimeSelect.setItems(regimeChoices);
+		regimeSelect.setValue("Classique");
+		
 		this.allUstensiles.getChildren().clear();
 		this.model.filtrerUstensiles(this.champUstensile.getText());
 		List<Ustensile> allUstensilesListe = this.model.getUstensileFiltrees();
