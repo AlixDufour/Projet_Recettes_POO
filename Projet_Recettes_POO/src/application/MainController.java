@@ -82,11 +82,12 @@ public class MainController extends Controller {
 		
 		listeRecettes.getChildren().clear();
 		
-		int maxColumnNumber = 4;
+		int maxColumnNumber = 3;
 		int x = 1;
 		int y = 1;
 		for (Recette r : this.model.getRecetteFiltrees()) {
 			VBox vbox = new VBox();
+			vbox.setMinWidth(250);
 			Button b = new Button(r.getName());
 			b.setOnAction(e -> {
 				try {

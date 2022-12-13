@@ -17,11 +17,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProfileController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TabPane prefHeight="358.0" prefWidth="372.0" side="LEFT" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab style="-fx-rotate: 90; -fx-pref-height: 100;" text="Profil">
+                <Tab style="-fx-pref-height: 100;" text="Profil">
                      <content>
                         <VBox prefHeight="200.0" prefWidth="100.0" />
                      </content>
@@ -79,7 +79,7 @@
                         </VBox>
                      </content>
                   </Tab>
-                  <Tab style="-fx-rotate: 90; -fx-pref-height: 100;" text="Goûts">
+                  <Tab style="-fx-pref-height: 100;" text="Goûts">
                      <content>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
@@ -117,7 +117,7 @@
                         </HBox>
                      </content>
                   </Tab>
-                <Tab style="-fx-rotate: 90; -fx-pref-height: 100;" text="Ustensiles">
+                <Tab style="-fx-pref-height: 100;" text="Ustensiles">
                      <content>
                         <HBox prefHeight="100.0" prefWidth="200.0" />
                      </content>

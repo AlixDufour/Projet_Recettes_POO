@@ -24,6 +24,7 @@ public class Main extends Application {
 			
 			model.switchScene(CreationScenes.creerChoixProfileScene(model));
 			
+			primaryStage.setTitle("Application de recettes");
 			primaryStage.show();
 			
 			
