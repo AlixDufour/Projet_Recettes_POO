@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -50,7 +49,35 @@
                               <HBox prefHeight="34.0" prefWidth="230.0">
                                  <children>
                                     <Label prefHeight="28.0" prefWidth="110.0" text="Note : " />
-                                    <TextField alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="179.0" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <ImageView fx:id="etoile1" fitHeight="50.0" fitWidth="25.0" onMouseClicked="#clickEtoile1" onMouseEntered="#hoverEtoile1" onMouseExited="#updateNote" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/etoile.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="etoile2" fitHeight="50.0" fitWidth="25.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#clickEtoile2" onMouseEntered="#hoverEtoile2" onMouseExited="#updateNote" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/etoile.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="etoile3" fitHeight="50.0" fitWidth="25.0" layoutX="36.0" layoutY="10.0" onMouseClicked="#clickEtoile3" onMouseEntered="#hoverEtoile3" onMouseExited="#updateNote" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/etoile.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="etoile4" fitHeight="50.0" fitWidth="25.0" layoutX="61.0" layoutY="10.0" onMouseClicked="#clickEtoile4" onMouseEntered="#hoverEtoile4" onMouseExited="#updateNote" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/etoile.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="etoile5" fitHeight="50.0" fitWidth="25.0" layoutX="87.0" layoutY="10.0" onMouseClicked="#clickEtoile5" onMouseEntered="#hoverEtoile5" onMouseExited="#updateNote" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/etoile.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </HBox>
                               <Label text="Commentaire" />
@@ -96,7 +123,7 @@
                                                 <Font size="16.0" />
                                              </font>
                                           </Label>
-                                          <Button mnemonicParsing="false" text="-" />
+                                          <Button mnemonicParsing="false" onAction="#moins" text="-" />
                                           <Label fx:id="quantite" text="2" textAlignment="CENTER">
                                              <font>
                                                 <Font size="18.0" />
@@ -105,7 +132,7 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </padding>
                                           </Label>
-                                          <Button mnemonicParsing="false" text="+" />
+                                          <Button mnemonicParsing="false" onAction="#plus" text="+" />
                                        </children>
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

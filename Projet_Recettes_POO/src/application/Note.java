@@ -15,6 +15,8 @@ public class Note {
 	public int getRecetteId() {return this.recetteId;}
 	public int getNote() {return this.note;}
 	
+	public void setNote(int note) {this.note = note;}
+	
 	public String toString() {
 		String s = "Profile : " + this.profileId + "\n"; 
 		s += "Recette : " + this.recetteId + "\n"; 
