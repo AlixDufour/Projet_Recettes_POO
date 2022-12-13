@@ -91,7 +91,7 @@
                      </children>
                   </GridPane>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recherche par thème" textAlignment="CENTER" wrappingWidth="518.1367454528809" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="518.0" text="Super application de recettes" textAlignment="CENTER" GridPane.columnIndex="1">
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="518.0" textAlignment="CENTER" GridPane.columnIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>

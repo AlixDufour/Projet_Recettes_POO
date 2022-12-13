@@ -41,7 +41,7 @@
                      <children>
                         <ImageView fitHeight="229.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/bouffe-quebecoise-smoked-meat.jpg" />
+                              <Image url="@../img/cuisine.png" />
                            </image>
                         </ImageView>
                         <VBox prefHeight="198.0" prefWidth="376.0" spacing="15.0">

@@ -23,7 +23,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Qui a envie de graille ?" textAlignment="CENTER" wrappingWidth="519.901538848877" GridPane.columnIndex="1">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choix du profil" textAlignment="CENTER" wrappingWidth="519.901538848877" GridPane.columnIndex="1">
          <font>
             <Font size="24.0" />
          </font>
