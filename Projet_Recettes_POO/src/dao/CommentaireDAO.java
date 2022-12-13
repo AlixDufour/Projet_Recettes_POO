@@ -53,7 +53,7 @@ public class CommentaireDAO implements Dao<Commentaire> {
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			
+				
 			while(rs.next()) {
 				comms.add(new Commentaire(rs.getInt(1),rs.getInt(2), rs.getString(3)));
 			}

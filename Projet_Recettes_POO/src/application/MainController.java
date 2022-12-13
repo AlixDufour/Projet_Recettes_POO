@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.ColorAdjust;
@@ -42,6 +43,8 @@ public class MainController implements Observateur, Initializable {
 	@FXML
 	private ImageView imgEntree, imgPlat, imgDessert, imgViande, imgPoisson, imgLegumes;
 
+	@FXML
+	private CheckBox applyPreferencesBox;
 	
 	private String categorie = "";
 
@@ -117,12 +120,12 @@ public class MainController implements Observateur, Initializable {
 	public void setModele(Modele m) {
 		this.model = m;
 		model.ajouterObservateur(this);
-		this.model.filtrerRecettes(champRecherche.getText(),categorie ,true);
+		this.model.filtrerRecettes(champRecherche.getText(),categorie ,applyPreferencesBox.isSelected());
 	}
 
 	
 	public void rechercher() {
-		this.model.filtrerRecettes(champRecherche.getText(),categorie, true);
+		this.model.filtrerRecettes(champRecherche.getText(),categorie, applyPreferencesBox.isSelected());
 	}
 	
 	public void entreeHover() {
@@ -301,5 +304,13 @@ public class MainController implements Observateur, Initializable {
 		this.imgPoisson.setEffect(null);
 		this.imgViande.setEffect(null);
 		this.rechercher();
+	}
+	
+	public void changeApplyPreferences() {	
+		if(applyPreferencesBox.isSelected()) {
+			this.model.filtrerRecettes(champRecherche.getText(), categorie, true);
+		}else {
+			this.model.filtrerRecettes(champRecherche.getText(), categorie, false);
+		}
 	}
 }
