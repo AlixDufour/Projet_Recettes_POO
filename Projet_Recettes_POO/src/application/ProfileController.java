@@ -8,9 +8,11 @@ import java.util.ResourceBundle;
 
 import dao.IngredientDAO;
 import dao.ProfileDAO;
+import dao.RegimeDAO;
 import dao.UstensileDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -38,6 +40,8 @@ public class ProfileController extends Controller{
 	private VBox allUstensiles;
 	@FXML
 	private VBox listeUstensiles;
+
+	private List<String> regimes;
 
 	@Override
 	public void reagir() {
@@ -79,6 +83,8 @@ public class ProfileController extends Controller{
 
 		updateUstensiles();
 		updateAllUstensiles();
+
+		updateAllRegime();
 	}
 
 	public void updateAllIngredients() {
@@ -113,6 +119,18 @@ public class ProfileController extends Controller{
 				ajoutBoutonListeIngredients(l);
 			}
 		}
+	}
+
+	public void updateAllRegime() {
+		// Récupération des régimes
+		RegimeDAO rrd = new RegimeDAO();
+		regimes = rrd.getNames();
+		ObservableList<String> regimesChoices = FXCollections.observableArrayList(regimes);
+		if (model.getActiveProfile().getRegime() == null)
+			regimeSelect.setValue(regimes.get(0));
+		else
+			regimeSelect.setValue(model.getActiveProfile().getRegime().getLibelle());
+		regimeSelect.setItems(regimesChoices);
 	}
 
 	public void updateUstensiles() {
@@ -170,6 +188,8 @@ public class ProfileController extends Controller{
 
 	public void clickRetour() {
 		try {
+			changeProfileName();
+			changeRegime();
 			ProfileDAO pdao = new ProfileDAO();
 			pdao.update(model.getActiveProfile(), null);
 			model.switchScene(CreationScenes.creerMainScene(model));
@@ -189,6 +209,15 @@ public class ProfileController extends Controller{
 			e.printStackTrace();
 		}
 	}
+
+	public void changeRegime() {
+		RegimeDAO rrd = new RegimeDAO();
+		Regime regime = rrd.getRegimeId(regimeSelect.getValue());
+		if (regime != null) {
+			model.getActiveProfile().setRegime(regime);
+		}
+	}
+
 
 	public void updateName() {
 		if (model != null)

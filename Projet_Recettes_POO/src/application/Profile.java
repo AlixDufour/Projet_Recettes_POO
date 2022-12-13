@@ -37,6 +37,10 @@ public class Profile {
 		prenom = s;
 	}
 
+	public void setRegime(Regime r) {
+		regime = r;
+	}
+
 	public String getPrenom() {return this.prenom;}
 	public String getNom() {return this.nom;}
 	public Regime getRegime() {return this.regime;}
