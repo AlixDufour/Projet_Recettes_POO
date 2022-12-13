@@ -71,6 +71,7 @@ public class RecetteFormController implements Initializable, Observateur {
 		rrd = new RecetteRegimeDAO();
 		regimes = rrd.getRegimesNames();
 		ObservableList<String> regimesChoices = FXCollections.observableArrayList(regimes);
+		form_regime.setValue(regimes.get(0));
 		form_regime.setItems(regimesChoices);
 
 		// Récupération des ingrédients 
@@ -140,7 +141,9 @@ public class RecetteFormController implements Initializable, Observateur {
 			Ustensile tmp = udao.getUstensileId(((ChoiceBox<String>) ((HBox) i).getChildren().get(1)).getValue()); 	
 			System.out.print(tmp);
 			RecetteUstensile ru = new RecetteUstensile(id_recette, tmp);
-			rudao.create(ru);			
+			if(tmp != null) {
+				rudao.create(ru);
+			}
 		}
 
 		// Enregistrement des ingrédients
@@ -149,10 +152,18 @@ public class RecetteFormController implements Initializable, Observateur {
 		QuantiteIngredientDAO qidao = new QuantiteIngredientDAO();
 		for(Node i : box)  {
 			Ingredient tmp = idao.getIngredientId(((ChoiceBox<String>) ((HBox) i).getChildren().get(1)).getValue());
-			int qte = Integer.parseInt(((TextField) ((HBox) i).getChildren().get(3)).getText()); 
+			int qte;
+			try {
+				qte = Integer.parseInt(((TextField) ((HBox) i).getChildren().get(3)).getText()); 
+			}catch(NumberFormatException e){
+				continue;
+			}
+			
 			TypeQuantite tq = tqdao.gettypeQteId(((ChoiceBox<String>) ((HBox) i).getChildren().get(5)).getValue());
 			QuantiteIngredient qi = new QuantiteIngredient(id_recette, tmp, qte, tq);
-			qidao.create(qi);
+			if(tmp != null && tq != null) {
+				qidao.create(qi);
+			}
 		}
 
 		// Enregistrement des régimes
@@ -161,17 +172,20 @@ public class RecetteFormController implements Initializable, Observateur {
 		for(Node i : box)  {
 			Regime tmp = rrd.getRegimeId(((ChoiceBox<String>) ((HBox) i).getChildren().get(1)).getValue()); 
 			RecetteRegime rr = new RecetteRegime(id_recette, tmp);
-			rrd.create(rr);
+			if(tmp != null) {
+				rrd.create(rr);
+			}
 		}
 
 		// On redirige vers la page d'accueil
+		this.model.rechargerRecettes();
 		redirect();
 	}
 
 	@FXML
 	public void ajouterLigneIngredient(ActionEvent event) {
 		try {
-			HBox form = FXMLLoader.load(getClass().getResource("./../scenes/FormIngredient.fxml"));
+			HBox form = FXMLLoader.load(getClass().getResource("/scenes/FormIngredient.fxml"));
 			ObservableList<String> ingredientsChoices = FXCollections.observableArrayList(ingredients);
 			((ChoiceBox) form.getChildren().get(1)).setItems(ingredientsChoices);
 
@@ -188,7 +202,7 @@ public class RecetteFormController implements Initializable, Observateur {
 	@FXML
 	public void ajouterLigneUstensile(ActionEvent event) {
 		try {
-			HBox form = FXMLLoader.load(getClass().getResource("./../scenes/FormUstensile.fxml"));
+			HBox form = FXMLLoader.load(getClass().getResource("/scenes/FormUstensile.fxml"));
 			ObservableList<String> ustensilesChoices = FXCollections.observableArrayList(ustensiles);
 			((ChoiceBox) form.getChildren().get(1)).setItems(ustensilesChoices);
 
@@ -202,7 +216,7 @@ public class RecetteFormController implements Initializable, Observateur {
 	public void ajouterLigneEtape(ActionEvent event) {
 		try {
 			countEtapes ++;
-			HBox form = FXMLLoader.load(getClass().getResource("./../scenes/FormEtape.fxml"));
+			HBox form = FXMLLoader.load(getClass().getResource("/scenes/FormEtape.fxml"));
 			((Label) form.getChildren().get(0)).setText("Etape n°" + countEtapes);
 			etapesBox.getChildren().add((Node) form);
 		} catch (IOException e2) {
@@ -213,7 +227,7 @@ public class RecetteFormController implements Initializable, Observateur {
 	@FXML
 	public void ajouterLigneRegime(ActionEvent event) {
 		try {
-			HBox form = FXMLLoader.load(getClass().getResource("./../scenes/FormRegime.fxml"));
+			HBox form = FXMLLoader.load(getClass().getResource("/scenes/FormRegime.fxml"));
 			ObservableList<String> regimesChoices = FXCollections.observableArrayList(regimes);
 			((ChoiceBox) form.getChildren().get(1)).setItems(regimesChoices);
 
@@ -226,7 +240,7 @@ public class RecetteFormController implements Initializable, Observateur {
 	@FXML
 	public void ajouterLigneCategorie(ActionEvent event) {
 		try {
-			HBox form = FXMLLoader.load(getClass().getResource("./../scenes/FormCategorie.fxml"));
+			HBox form = FXMLLoader.load(getClass().getResource("/scenes/FormCategorie.fxml"));
 			categorieBox.getChildren().add((Node) form);
 		} catch (IOException e2) {
 			e2.printStackTrace();
