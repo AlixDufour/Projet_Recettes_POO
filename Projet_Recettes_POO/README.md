@@ -7,5 +7,6 @@ Réalisé par Alix Dufour, Théo Bouguet et Océane Chaduc-Nguyen
 ## Sujet 
 
 - Application pour enregistrer des recettes 
-- Génération d’une liste de courses automatique
+- Visualisation des recettes
+- Personnalisation des résultats de recherche en fonction de différents critères
 - Utilisation des patrons de conception 
