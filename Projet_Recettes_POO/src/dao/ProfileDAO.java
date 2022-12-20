@@ -9,13 +9,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Gout;
-import application.Ingredient;
-import application.Profile;
-import application.ProfileUstensile;
-import application.RecetteUstensile;
-import application.Regime;
-import application.Ustensile;
+import application.Datas.Gout;
+import application.Datas.Ingredient;
+import application.Datas.Profile;
+import application.Datas.ProfileUstensile;
+import application.Datas.Regime;
+import application.Datas.Ustensile;
 
 public class ProfileDAO implements Dao<Profile> {
 	

@@ -9,8 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Commentaire;
-import application.Note;
+import application.Datas.Commentaire;
 
 public class CommentaireDAO implements Dao<Commentaire> {
 

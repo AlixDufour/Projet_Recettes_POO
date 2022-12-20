@@ -8,12 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Ingredient;
-import application.QuantiteIngredient;
-import application.RecetteUstensile;
-import application.Regime;
-import application.TypeQuantite;
-import application.Ustensile;
+import application.Datas.TypeQuantite;
 
 public class TypeQuantiteDAO implements Dao<TypeQuantite> {
 

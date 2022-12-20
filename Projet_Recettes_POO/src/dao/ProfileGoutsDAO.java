@@ -8,10 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Gout;
-import application.Ingredient;
-import application.RecetteUstensile;
-import application.Ustensile;
+import application.Datas.Gout;
+import application.Datas.Ingredient;
 
 public class ProfileGoutsDAO implements Dao<Gout> {
 

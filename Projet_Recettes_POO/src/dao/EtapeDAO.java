@@ -5,12 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Etape;
-import application.Ingredient;
+import application.Datas.Etape;
 
 public class EtapeDAO implements Dao<Etape> {
 	private Connection conn;

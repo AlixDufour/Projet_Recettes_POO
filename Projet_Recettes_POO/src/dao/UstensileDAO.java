@@ -9,8 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Ingredient;
-import application.Ustensile;
+import application.Datas.Ustensile;
 
 public class UstensileDAO implements Dao<Ustensile> {
 

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ChoixProfileController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.ChoixProfileController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.79998779296875" minWidth="6.399999284744261" prefWidth="6.399999284744261" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="575.999951171875" minWidth="10.0" prefWidth="575.999951171875" />

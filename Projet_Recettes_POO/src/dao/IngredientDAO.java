@@ -9,8 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Ingredient;
-import application.Recette;
+import application.Datas.Ingredient;
 
 public class IngredientDAO implements Dao<Ingredient> {
 

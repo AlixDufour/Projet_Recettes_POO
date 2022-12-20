@@ -5,13 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Recette;
-import application.RecetteUstensile;
-import application.Ustensile;
+import application.Datas.RecetteUstensile;
+import application.Datas.Ustensile;
 
 public class RecetteUstensileDAO implements Dao<RecetteUstensile> {
 	private Connection conn;

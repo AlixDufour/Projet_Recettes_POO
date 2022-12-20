@@ -8,10 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Gout;
-import application.Ingredient;
-import application.ProfileUstensile;
-import application.Ustensile;
+import application.Datas.ProfileUstensile;
+import application.Datas.Ustensile;
 
 public class ProfileUstensileDAO implements Dao<ProfileUstensile> {
 

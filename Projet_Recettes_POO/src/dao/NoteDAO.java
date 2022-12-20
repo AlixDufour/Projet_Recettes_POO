@@ -9,8 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Ingredient;
-import application.Note;
+import application.Datas.Note;
 
 public class NoteDAO implements Dao<Note> {
 

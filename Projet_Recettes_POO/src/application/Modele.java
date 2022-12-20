@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.Datas.*;
 import dao.IngredientDAO;
 import dao.RecetteDAO;
 import dao.UstensileDAO;
@@ -133,7 +134,7 @@ public class Modele {
 					
 					// On regarde parmi les ingrédients
 
-					for(Ingredient g : this.activeProfile.gouts) {				
+					for(Ingredient g : this.activeProfile.getGouts()) {
 						{for(QuantiteIngredient i : r.getIngredients()) {
 							if(g.getId() == i.getIngredient().getId()) {
 									this.recettesFiltrees.remove(r);
@@ -146,7 +147,7 @@ public class Modele {
 					// On regarde parmi les ustensiles
 					for(Ustensile ru : r.getUstensiles()) {
 						boolean checkUstensile = false;
-						for(Ustensile u : this.activeProfile.ustensiles) {
+						for(Ustensile u : this.activeProfile.getUstensile()) {
 							if(u.getId() == ru.getId()) checkUstensile = true;
 						}
 						if(!checkUstensile) {

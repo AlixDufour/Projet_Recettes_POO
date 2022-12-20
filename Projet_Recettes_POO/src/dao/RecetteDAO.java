@@ -2,12 +2,12 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.Recette;
-import application.RecetteRegime;
-import application.RecetteUstensile;
-import application.Regime;
-import application.Ustensile;
-import dao.Dao;
+import application.Datas.Recette;
+import application.Datas.RecetteRegime;
+import application.Datas.RecetteUstensile;
+import application.Datas.Regime;
+import application.Datas.Ustensile;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

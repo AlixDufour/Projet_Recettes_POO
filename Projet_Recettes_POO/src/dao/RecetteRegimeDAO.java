@@ -8,10 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.RecetteRegime;
-import application.RecetteUstensile;
-import application.Regime;
-import application.Ustensile;
+import application.Datas.RecetteRegime;
+import application.Datas.Regime;
 
 public class RecetteRegimeDAO implements Dao<RecetteRegime> {
 
